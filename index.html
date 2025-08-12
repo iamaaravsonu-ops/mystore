@@ -177,6 +177,52 @@
         "image": "https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/main/logo.jpg.png"
     }
 ]
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+        }
+        .product img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Store</h1>
+    <div id="products"></div>
+
+    <script>
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                let productsDiv = document.getElementById('products');
+                data.forEach(product => {
+                    productsDiv.innerHTML += `
+                        <div class="product">
+                            <h2>${product.name}</h2>
+                            <img src="${product.image}" alt="${product.name}">
+                            <p>${product.price}</p>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => {
+                console.error("Error loading products:", error);
+            });
+    </script>
+</body>
+</html>
 
 
 
