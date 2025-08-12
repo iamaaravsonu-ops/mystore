@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Product Catalog</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f8;
+    color: #222;
+  }
+  header {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 15px;
+  }
+  .search-box {
+    margin: 10px 0 20px;
+    display: flex;
+    gap: 10px;
+  }
+  .search-box input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  .card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-content h3 {
+    margin: 5px 0;
+    font-size: 18px;
+  }
+  .price {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .desc {
+    font-size: 14px;
+    flex: 1;
+    color: #555;
+  }
+  .tag {
+    display: inline-block;
+    background: #eee;
+    color: #555;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin: 4px 4px 0 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>My Product Catalog</h1>
+</header>
+<div class="container">
+  <div class="search-box">
+    <input type="search" id="search" placeholder="Search products..." />
+  </div>
+  <div id="grid" class="grid"></div>
+</div>
+
+<script>
+async function loadProducts(){
+  const res = await fetch('products.json');
+  const products = await res.json();
+  window.ALL_PRODUCTS = products;
+  render(products);
+}
+
+function render(list){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = list.map(p => `
+    <div class="card">
+      <img src="images/${p.image || 'placeholder.png'}" alt="${p.name}" onerror="this.src='images/placeholder.png'">
+      <div class="card-content">
+        <h3>${p.name}</h3>
+        <div class="price">₹${p.price}</div>
+        <div class="desc">${p.description || ''}</div>
+        <div>${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('search').addEventListener('input', e=>{
+  const q = e.target.value.toLowerCase();
+  if(!q) return render(window.ALL_PRODUCTS);
+  render(window.ALL_PRODUCTS.filter(p =>
+    (p.name + ' ' + (p.description||'') + ' ' + (p.tags||[]).join(' ')).toLowerCase().includes(q)
+  ));
+});
+
+loadProducts();
+</script>
+</body>
+</html>
