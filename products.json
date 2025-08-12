@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Blue Cotton T-shirt",
+    "price": "499",
+    "image": "tshirt-blue.jpg",
+    "description": "Soft cotton, size M",
+    "tags": ["Clothes", "T-shirt"]
+  },
+  {
+    "name": "Black Hoodie",
+    "price": "999",
+    "image": "hoodie-black.jpg",
+    "description": "Warm hoodie, unisex",
+    "tags": ["Clothes", "Hoodie"]
+  }
+]
