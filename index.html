@@ -1,233 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Store</title>
-  <style>
-    :root{
-      --accent:#ff6b35;
-      --maxw:1100px;
-      --card-bg: #fff;
-      --body-bg:#f6f7fb;
-      --muted:#666;
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--body-bg);color:#222;
-    }
-    .wrap{max-width:var(--maxw);margin:18px auto;padding:16px}
-    header{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:16px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff8b5c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    h1{margin:0;font-size:20px}
-    .controls{margin-left:auto;display:flex;gap:8px;align-items:center}
-    .controls input,.controls select{
-      padding:10px 12px;border-radius:10px;border:1px solid #ddd;background:#fff;min-width:140px;
-    }
-    #count{font-size:13px;color:var(--muted);margin-left:8px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-    .card{background:var(--card-bg);border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(8,12,20,0.06);display:flex;flex-direction:column}
-    .card img{width:100%;height:160px;object-fit:cover}
-    .card-body{padding:10px;display:flex;flex-direction:column;gap:8px}
-    .name{font-weight:700}
-    .price{color:var(--accent);font-weight:700}
-    .desc{font-size:13px;color:var(--muted);min-height:40px}
-    .tags{margin-top:auto}
-    .tag{display:inline-block;background:#f1f3f5;color:#555;padding:5px 8px;border-radius:8px;font-size:12px;margin-right:6px;margin-top:6px}
-    .card:hover{transform:translateY(-4px);transition:transform .18s}
-    /* modal */
-    .modal-wrap{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
-    .modal{background:#fff;border-radius:12px;max-width:900px;width:100%;overflow:hidden;display:flex;flex-wrap:wrap}
-    .modal-left{flex:1 1 320px;min-width:320px}
-    .modal-left img{width:100%;height:100%;object-fit:cover;display:block}
-    .modal-right{flex:1 1 320px;padding:16px}
-    .close-btn{border:0;background:#eee;padding:8px 10px;border-radius:8px;cursor:pointer}
-    .contact{display:inline-block;margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-    @media(max-width:540px){ .modal{flex-direction:column}.modal-left,.modal-right{min-width:100%}.card img{height:140px} }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">MS</div>
-        <div>
-          <h1>My Store</h1>
-          <div style="font-size:13px;color:var(--muted)">Showcase • No online payments</div>
-        </div>
-      </div>
-
-      <div class="controls">
-        <input id="search" type="search" placeholder="Search products, tags..." />
-        <select id="category">
-          <option value="">All categories</option>
-        </select>
-        <div id="count">0 products</div>
-      </div>
-    </header>
-
-    <main>
-      <div id="grid" class="grid"></div>
-      <footer>Prices are for display only. To enquire / buy, contact us.</footer>
-    </main>
-  </div>
-
-  <div id="modalWrap" class="modal-wrap" onclick="closeModal(event)">
-    <div class="modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
-      <div class="modal-left">
-        <img id="modalImg" src="images/placeholder.png" alt="">
-      </div>
-      <div class="modal-right">
-        <button class="close-btn" onclick="closeModal()">Close</button>
-        <h2 id="modalName"></h2>
-        <div style="margin-top:8px;font-weight:700;color:var(--accent)" id="modalPrice"></div>
-        <p id="modalDesc" style="color:var(--muted)"></p>
-        <div id="modalTags"></div>
-        <a id="contactBtn" class="contact" href="#">Contact</a>
-      </div>
-    </div>
-  </div>
-
-<script>
-  function esc(s){ return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-  async function load(){
-    try{
-      const res = await fetch('products.json', {cache: 'no-store'});
-      if(!res.ok) throw new Error('products.json load error');
-      const products = await res.json();
-      window.ALL = products;
-      buildCategories(products);
-      render(products);
-    }catch(e){
-      document.getElementById('grid').innerHTML = '<p style="color:#b00">Could not load products.json — upload it to repo.</p>';
-      console.error(e);
-    }
-  }
-
-  function buildCategories(list){
-    const s = document.getElementById('category');
-    const cats = new Set();
-    list.forEach(p => (p.tags||[]).forEach(t => cats.add(t)));
-    Array.from(cats).sort().forEach(c => {
-      const o = document.createElement('option'); o.value = c; o.textContent = c; s.appendChild(o);
-    });
-  }
-
-  function render(list){
-    const grid = document.getElementById('grid');
-    if(!list || list.length===0){ grid.innerHTML = '<p>No products found.</p>'; document.getElementById('count').textContent='0 products'; return;}
-    grid.innerHTML = list.map(p=>`
-      <div class="card" tabindex="0" onclick="openModal(${p.id})">
-        <img src="images/${esc(p.image||'placeholder.png')}" alt="${esc(p.name)}" onerror="this.src='images/placeholder.png'">
-        <div class="card-body">
-          <div class="name">${esc(p.name)}</div>
-          <div class="price">₹${esc(p.price)}</div>
-          <div class="desc">${esc(p.description||'')}</div>
-          <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
-        </div>
-      </div>`).join('');
-    document.getElementById('count').textContent = list.length + ' products';
-  }
-
-  function filterAndRender(){
-    const q = (document.getElementById('search').value||'').trim().toLowerCase();
-    const cat = document.getElementById('category').value;
-    const filtered = (window.ALL||[]).filter(p=>{
-      const hay = ((p.name+' '+(p.description||'')+' '+(p.tags||[]).join(' '))).toLowerCase();
-      if(cat && !(p.tags||[]).includes(cat)) return false;
-      if(!q) return true;
-      return hay.includes(q);
-    });
-    render(filtered);
-  }
-
-  document.getElementById('search').addEventListener('input', filterAndRender);
-  document.getElementById('category').addEventListener('change', filterAndRender);
-
-  function openModal(id){
-    const p = (window.ALL||[]).find(x=>x.id===id);
-    if(!p) return;
-    document.getElementById('modalImg').src = 'images/'+(p.image||'placeholder.png');
-    document.getElementById('modalName').textContent = p.name;
-    document.getElementById('modalPrice').textContent = '₹'+p.price;
-    document.getElementById('modalDesc').textContent = p.description || '';
-    document.getElementById('modalTags').innerHTML = (p.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('');
-    document.getElementById('contactBtn').href = p.contact ? ('mailto:'+encodeURIComponent(p.contact)) : '#';
-    document.getElementById('modalWrap').style.display = 'flex';
-  }
-  function closeModal(e){
-    document.getElementById('modalWrap').style.display = 'none';
-    if(e && e.target === document.getElementById('modalWrap')) closeModal();
-  }
-  <h1>Welcome to My Store</h1>
-<img src="https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/main/logo.jpg.png" alt="Product Image" width="300">
-  [
-    {
-        "name": "Cool T-Shirt",
-        "price": "$19.99",
-        "image": "https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/main/logo.jpg.png"
-    },
-    {
-        "name": "Stylish Cap",
-        "price": "$9.99",
-        "image": "https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/main/logo.jpg.png"
-    }
-]
-<!DOCTYPE html>
-<html>
-<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Store</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
         .product {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-            display: inline-block;
-            width: 200px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .product img {
-            max-width: 100%;
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .product h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 16px;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to My Store</h1>
-    <div id="products"></div>
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/main/logo.jpg.png" alt="Product 1">
+            <h2>Product Name 1</h2>
+            <p>Price: ₹500</p>
+        </div>
 
-    <script>
-        fetch('products.json')
-            .then(response => response.json())
-            .then(data => {
-                let productsDiv = document.getElementById('products');
-                data.forEach(product => {
-                    productsDiv.innerHTML += `
-                        <div class="product">
-                            <h2>${product.name}</h2>
-                            <img src="${product.image}" alt="${product.name}">
-                            <p>${product.price}</p>
-                        </div>
-                    `;
-                });
-            })
-            .catch(error => {
-                console.error("Error loading products:", error);
-            });
-    </script>
-</body>
-</html>
+        <!-- Product 2 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 2">
+            <h2>Product Name 2</h2>
+            <p>Price: ₹600</p>
+        </div>
 
+        <!-- Product 3 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 3">
+            <h2>Product Name 3</h2>
+            <p>Price: ₹700</p>
+        </div>
 
+        <!-- Product 4 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 4">
+            <h2>Product Name 4</h2>
+            <p>Price: ₹800</p>
+        </div>
 
-  // load on start
-  document.addEventListener('DOMContentLoaded', load);
-</script>
+        <!-- Product 5 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 5">
+            <h2>Product Name 5</h2>
+            <p>Price: ₹900</p>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 6">
+            <h2>Product Name 6</h2>
+            <p>Price: ₹1000</p>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 7">
+            <h2>Product Name 7</h2>
+            <p>Price: ₹1100</p>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/iamaaravsonu-ops/mystore/4bfc92d796db48aa662c4a386e3723680efed5d6/logo.jpg.png">
+            <h2>Product Name 8</h2>
+            <p>Price: ₹1200</p>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 9">
+            <h2>Product Name 9</h2>
+            <p>Price: ₹1300</p>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 10">
+            <h2>Product Name 10</h2>
+            <p>Price: ₹1400</p>
+        </div>
+    </div>
 </body>
 </html>
