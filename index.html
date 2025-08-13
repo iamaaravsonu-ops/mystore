@@ -5,85 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarav Enterprises</title>
     <style>
-        .products {
-  text-align: center;
-  padding: 50px 20px;
-  background: #f8f9fa;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.product-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.product-card h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #222;
-}
-
-.product-card p {
-  font-size: 1rem;
-  color: #666;
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #74ABE2, #5563DE);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: #fff;
         }
+
         .container {
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 60px 20px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1.2s ease-in-out;
+            margin: 40px auto;
+            max-width: 800px;
         }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             animation: slideDown 1s ease-in-out;
         }
+
         .search-box {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 20px;
         }
+
         .search-box input {
             width: 300px;
             padding: 12px 20px;
@@ -93,10 +46,12 @@
             outline: none;
             transition: 0.3s;
         }
+
         .search-box input:focus {
             width: 350px;
             box-shadow: 0 0 10px #fff;
         }
+
         .search-box button {
             padding: 12px 20px;
             background: #ff5e57;
@@ -107,16 +62,69 @@
             cursor: pointer;
             transition: 0.3s;
         }
+
         .search-box button:hover {
             background: #ff3b2f;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
+
         @keyframes slideDown {
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Featured Products Section */
+        .products {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #222;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
     </style>
 </head>
@@ -128,37 +136,36 @@
             <button>Search</button>
         </div>
     </div>
-    <section class="products">
-  <h2 class="section-title">Featured Products</h2>
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Product 1">
-      <h3>Classic Watch</h3>
-      <p>$120</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Product 2">
-      <h3>Leather Wallet</h3>
-      <p>$45</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Product 3">
-      <h3>Running Shoes</h3>
-      <p>$85</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Product 4">
-      <h3>Smartphone</h3>
-      <p>$699</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Product 5">
-      <h3>Bluetooth Headphones</h3>
-      <p>$99</p>
-    </div>
-  </div>
-</section>
 
+    <section class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 1">
+                <h3>Classic Watch</h3>
+                <p>$120</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 2">
+                <h3>Leather Wallet</h3>
+                <p>$45</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 3">
+                <h3>Running Shoes</h3>
+                <p>$85</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 4">
+                <h3>Smartphone</h3>
+                <p>$699</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 5">
+                <h3>Bluetooth Headphones</h3>
+                <p>$99</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
-
