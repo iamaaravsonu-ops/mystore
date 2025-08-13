@@ -5,63 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarav Enterprises</title>
     <style>
-        /* Reset default */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             color: white;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h1 {
+            text-align: center;
+            margin: 30px 0;
             font-size: 3rem;
-            margin-bottom: 20px;
-            animation: fadeInDown 1.5s ease;
+            animation: fadeInDown 1.2s ease;
         }
 
         /* Search Bar */
         .search-container {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 15px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 1.5s ease;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .search-container input {
+            padding: 12px 15px;
+            width: 300px;
+            border-radius: 25px;
             border: none;
             outline: none;
-            flex: 1;
-            padding: 10px 15px;
-            background: transparent;
-            color: white;
-            font-size: 1.1rem;
+            font-size: 16px;
+            transition: 0.3s;
         }
 
-        .search-container input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+        .search-container input:focus {
+            width: 350px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.7);
         }
 
         .search-container button {
-            background: white;
+            padding: 12px 20px;
+            margin-left: 10px;
             border: none;
-            padding: 10px 18px;
-            border-radius: 50px;
+            border-radius: 25px;
+            background: #fff;
             color: #2575fc;
             font-weight: bold;
             cursor: pointer;
@@ -71,37 +58,120 @@
         .search-container button:hover {
             background: #2575fc;
             color: white;
+        }
+
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+            flex: 1;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        /* Animation */
-        @keyframes fadeInDown {
-            from {opacity: 0; transform: translateY(-30px);}
-            to {opacity: 1; transform: translateY(0);}
+        .card h3 {
+            margin: 10px 0;
         }
 
-        @keyframes fadeInUp {
-            from {opacity: 0; transform: translateY(30px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        /* Optional Footer */
-        footer {
-            position: absolute;
-            bottom: 20px;
+        .card p {
             font-size: 14px;
-            opacity: 0.8;
+            opacity: 0.9;
+        }
+
+        .card button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #fff;
+            color: #2575fc;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card button:hover {
+            background: #2575fc;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Aarav Enterprises</h1>
+
+    <h1>Aarav Enterprises</h1>
 
     <div class="search-container">
         <input type="text" placeholder="Search your products...">
         <button>Search</button>
     </div>
 
-    <footer>&copy; 2025 Aarav Enterprises | All Rights Reserved</footer>
+    <div class="products">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>High quality product description goes here.</p>
+            <button>Buy Now</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>Perfect for your daily needs.</p>
+            <button>Buy Now</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Product 3">
+            <h3>Product 3</h3>
+            <p>Affordable and reliable product.</p>
+            <button>Buy Now</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Aarav Enterprises. All rights reserved.
+    </footer>
+
 </body>
 </html>
