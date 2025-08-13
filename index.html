@@ -7,171 +7,78 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 3rem;
-            animation: fadeInDown 1.2s ease;
-        }
-
-        /* Search Bar */
-        .search-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .search-container input {
-            padding: 12px 15px;
-            width: 300px;
-            border-radius: 25px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .search-container input:focus {
-            width: 350px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.7);
-        }
-
-        .search-container button {
-            padding: 12px 20px;
-            margin-left: 10px;
-            border: none;
-            border-radius: 25px;
-            background: #fff;
-            color: #2575fc;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .search-container button:hover {
-            background: #2575fc;
-            color: white;
-        }
-
-        /* Products Section */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1100px;
-            margin: auto;
-            flex: 1;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .card h3 {
-            margin: 10px 0;
-        }
-
-        .card p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .card button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            background: #fff;
-            color: #2575fc;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .card button:hover {
-            background: #2575fc;
+            justify-content: center;
+            align-items: center;
             color: #fff;
         }
-
-        /* Footer */
-        footer {
+        .container {
             text-align: center;
-            padding: 15px;
-            background: rgba(0,0,0,0.3);
-            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.2s ease-in-out;
         }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-in-out;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .search-box input {
+            width: 300px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 25px 0 0 25px;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box input:focus {
+            width: 350px;
+            box-shadow: 0 0 10px #fff;
+        }
+        .search-box button {
+            padding: 12px 20px;
+            background: #ff5e57;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-box button:hover {
+            background: #ff3b2f;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
-
-    <h1>Aarav Enterprises</h1>
-
-    <div class="search-container">
-        <input type="text" placeholder="Search your products...">
-        <button>Search</button>
-    </div>
-
-    <div class="products">
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>High quality product description goes here.</p>
-            <button>Buy Now</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Product 2">
-            <h3>Product 2</h3>
-            <p>Perfect for your daily needs.</p>
-            <button>Buy Now</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Product 3">
-            <h3>Product 3</h3>
-            <p>Affordable and reliable product.</p>
-            <button>Buy Now</button>
+    <div class="container">
+        <h1>Welcome to Aarav Enterprises</h1>
+        <div class="search-box">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
         </div>
     </div>
-
-    <footer>
-        © 2025 Aarav Enterprises. All rights reserved.
-    </footer>
-
 </body>
 </html>
+
