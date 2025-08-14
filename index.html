@@ -10,16 +10,16 @@
   img{max-width:100%;display:block}
   button,input,select{font:inherit}
   :root{
-    --bg:#f2f2f3;
-    --card:#f2f2f3;
-    --ink:#181818;
-    --muted:#6b6b6b;
-    --accent:#111111;
-    --line:#e7e7e7;
-    --brand:#0b0b0b;
-    --pill:#ededed;
-    --ios-orange:#ff9500;
-    --whatsapp:#25D366;
+    --bg:#f2f2f3;      
+    --card:#f2f2f3;    /* Updated card color */
+    --ink:#181818;     
+    --muted:#6b6b6b;   
+    --accent:#111111;  
+    --line:#e7e7e7;    
+    --brand:#0b0b0b;   
+    --pill:#ededed;    
+    --ios-orange:#ff9500;  
+    --whatsapp:#25D366;    
     --radius:18px;
     --shadow:0 8px 20px rgba(0,0,0,.06);
     --ease:cubic-bezier(.22,.61,.36,1);
@@ -133,15 +133,6 @@
   .footwrap{
     max-width:1100px; margin:0 auto; padding:18px 14px;
   }
-  /* Calculator panel */
-  #calcPanel{
-    position:fixed; bottom:0; right:0; width:100%; max-width:400px; background:#fff;
-    border-top:2px solid var(--line); border-left:2px solid var(--line);
-    box-shadow:0 -4px 20px rgba(0,0,0,.1);
-    transform:translateY(100%); transition:transform .3s var(--ease);
-    z-index:80; padding:16px;
-  }
-  #calcPanel.open{ transform:translateY(0) }
 </style>
 </head>
 <body>
@@ -181,17 +172,6 @@
       <div><strong>Shop Address:</strong> [Fill your shop address here]</div>
     </div>
   </footer>
-
-  <!-- Calculator Panel -->
-  <div id="calcPanel">
-    <h3>Price Calculator</h3>
-    <label>Price: <input type="number" id="price" /></label><br><br>
-    <label>Quantity: <input type="number" id="quantity" /></label><br><br>
-    <label>Discount (%): <input type="number" id="discount" /></label><br><br>
-    <label>Tax (%): <input type="number" id="tax" /></label><br><br>
-    <strong>Total: ₹<span id="total">0</span></strong>
-  </div>
-
 <script>
 const products = [
   {name:"Pythonic Unisex Straight Fit Baggy Pants",price:1699,desc:"Heavy-weight cotton blend.",svg:`<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#111"/></svg>`},
@@ -204,27 +184,6 @@ const sheet=document.getElementById('sheet');
 const openSheet=p=>{document.getElementById('sheetTitle').textContent=p.name;document.getElementById('sheetPrice').textContent="₹"+p.price;document.getElementById('sheetDesc').textContent=p.desc;sheet.classList.add('open');}
 document.getElementById('closeSheet').onclick=()=>sheet.classList.remove('open');
 document.getElementById('year').textContent=new Date().getFullYear();
-
-// Calculator logic
-const calcPanel=document.getElementById('calcPanel');
-document.getElementById('fab').onclick=()=>calcPanel.classList.toggle('open');
-const price=document.getElementById('price');
-const qty=document.getElementById('quantity');
-const discount=document.getElementById('discount');
-const tax=document.getElementById('tax');
-const total=document.getElementById('total');
-
-function updateTotal(){
-  let p=parseFloat(price.value)||0;
-  let q=parseFloat(qty.value)||0;
-  let d=parseFloat(discount.value)||0;
-  let t=parseFloat(tax.value)||0;
-  let subtotal=p*q;
-  subtotal-=subtotal*(d/100);
-  subtotal+=subtotal*(t/100);
-  total.textContent=subtotal.toFixed(2);
-}
-[price,qty,discount,tax].forEach(el=>el.addEventListener('input',updateTotal));
 </script>
 </body>
 </html>
