@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StyleHub - Modern Fashion Showroom</title>
+    <title>Aarav Enterprise - Modern house Showroom</title>
     <style>
         * {
             margin: 0;
@@ -290,86 +290,6 @@
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.shifted {
-            margin-left: 320px;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            left: -320px;
-            top: 140px;
-            width: 320px;
-            height: calc(100vh - 140px);
-            background: var(--secondary-bg);
-            z-index: 999;
-            padding: 30px;
-            transition: left 0.3s ease;
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar.open {
-            left: 0;
-        }
-
-        .sidebar-toggle {
-            position: fixed;
-            top: 160px;
-            left: 20px;
-            z-index: 1001;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(74, 158, 255, 0.4);
-        }
-
-        .sidebar h3 {
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            font-size: 18px;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-        }
-
-        .category-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .category-list li {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 6px;
-            margin-bottom: 5px;
-        }
-
-        .category-list li:hover, .category-list li.active {
-            color: var(--accent);
-            background: var(--card-bg);
-            transform: translateX(5px);
-        }
-
-        .price-range {
-            width: 100%;
-            margin: 15px 0;
-            accent-color: var(--accent);
         }
 
         /* Products Section */
@@ -542,21 +462,25 @@
             position: absolute;
             right: 25px;
             top: 20px;
-            font-size: 28px;
+            font-size: 32px;
             cursor: pointer;
             color: var(--text-secondary);
             transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            z-index: 10;
         }
 
         .close:hover {
             color: var(--sale-badge);
-            background: var(--secondary-bg);
+            background: var(--primary-bg);
+            transform: rotate(90deg);
         }
 
         /* Calculator */
@@ -566,8 +490,8 @@
             right: 20px;
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px;
-            width: 280px;
+            padding: 15px;
+            width: 250px;
             z-index: 1500;
             border: 1px solid var(--border-color);
             transform: translateY(-400px);
@@ -589,41 +513,41 @@
 
         .calc-header {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--text-primary);
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .calc-display {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 12px;
             background: var(--secondary-bg);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             border-radius: 8px;
             text-align: right;
-            font-size: 18px;
+            font-size: 16px;
             font-family: monospace;
         }
 
         .calc-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 6px;
+            margin-bottom: 15px;
         }
 
         .calc-btn {
-            padding: 15px;
+            padding: 12px;
             background: var(--secondary-bg);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.3s ease;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
         }
 
@@ -649,26 +573,26 @@
         }
 
         .converter {
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             border-top: 1px solid var(--border-color);
         }
 
         .converter h4 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--text-primary);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .converter select, .converter input {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 10px;
+            margin: 6px 0;
             background: var(--secondary-bg);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 6px;
+            font-size: 13px;
             transition: all 0.3s ease;
         }
 
@@ -760,17 +684,6 @@
             }
         }
 
-        @media (max-width: 1024px) {
-            .main-content.shifted {
-                margin-left: auto;
-            }
-
-            .sidebar {
-                width: 280px;
-                left: -280px;
-            }
-        }
-
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -812,11 +725,11 @@
 
             /* Calculator Mobile Optimization */
             .calculator {
-                width: 260px;
+                width: 230px;
                 top: 140px;
                 right: 10px;
                 transform: translateY(-420px);
-                padding: 15px;
+                padding: 12px;
             }
 
             .calculator.open {
@@ -826,19 +739,19 @@
             }
 
             .calc-display {
-                padding: 12px;
-                font-size: 16px;
+                padding: 10px;
+                font-size: 14px;
             }
 
             .calc-btn {
-                padding: 12px;
-                font-size: 14px;
+                padding: 10px;
+                font-size: 13px;
             }
 
             .converter input,
             .converter select {
-                padding: 10px;
-                font-size: 13px;
+                padding: 8px;
+                font-size: 12px;
             }
 
             /* WhatsApp Button Mobile */
@@ -850,22 +763,32 @@
                 right: 15px;
             }
 
-            .sidebar {
-                width: 280px;
-                left: -280px;
-            }
-
-            .sidebar-toggle {
-                top: 150px;
-                left: 10px;
-                padding: 10px;
-                font-size: 16px;
-            }
-
+            /* Modal Mobile - Prominent Close Button */
             .modal-content {
                 width: 95%;
-                padding: 25px;
-                margin: 10% auto;
+                padding: 25px 20px;
+                margin: 5% auto;
+                position: relative;
+                z-index: 2001;
+            }
+
+            .close {
+                right: 10px;
+                top: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 36px;
+                background: var(--accent);
+                color: white;
+                border: 3px solid white;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                z-index: 2002;
+                position: fixed;
+            }
+
+            .close:hover {
+                background: var(--sale-badge);
+                transform: rotate(90deg) scale(1.1);
             }
 
             .main-content {
@@ -922,13 +845,13 @@
 
             /* Calculator Extra Small Screens */
             .calculator {
-                width: 240px;
+                width: 220px;
                 transform: translateY(-420px);
             }
 
             .calc-btn {
-                padding: 10px;
-                font-size: 13px;
+                padding: 9px;
+                font-size: 12px;
             }
 
             .search-box {
@@ -937,12 +860,19 @@
             }
 
             .modal-content {
-                padding: 20px;
+                padding: 20px 15px;
+                position: relative;
+                z-index: 2001;
             }
 
             .close {
-                right: 15px;
-                top: 15px;
+                right: 5px;
+                top: 5px;
+                width: 55px;
+                height: 55px;
+                font-size: 40px;
+                z-index: 2002;
+                position: fixed;
             }
         }
 
@@ -954,7 +884,7 @@
             }
 
             .calculator {
-                width: 270px;
+                width: 240px;
             }
         }
     </style>
@@ -966,14 +896,14 @@
             🔥 WEEKEND SAVING'S SALE | UPTO 60% OFF | OFFER ENDS TODAY ⏰
         </div>
         <nav class="nav-container">
-            <a href="#" class="logo">StyleHub</a>
+            <a href="#" class="logo">Aarav Enterprise</a>
             
             <ul class="nav-menu">
                 <li><a href="#" class="nav-item active" data-category="all">NEW ARRIVALS</a></li>
-                <li><a href="#" class="nav-item" data-category="tops">TOPS</a></li>
-                <li><a href="#" class="nav-item" data-category="bottoms">BOTTOMS</a></li>
-                <li><a href="#" class="nav-item" data-category="basics">BASICS</a></li>
-                <li><a href="#" class="nav-item" data-category="clearance">CLEARANCE</a></li>
+                <li><a href="#" class="nav-item" data-category="carpet">CARPET</a></li>
+                <li><a href="#" class="nav-item" data-category="curtain">CURTAIN</a></li>
+                <li><a href="#" class="nav-item" data-category="doormate">DOORMATE </a></li>
+                <li><a href="#" class="nav-item" data-category="house care">HOUSE CARE</a></li>
             </ul>
             
             <div class="nav-icons">
@@ -1000,48 +930,13 @@
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="#" class="mobile-nav-item active" data-category="all">NEW ARRIVALS</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="tops">TOPS</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="bottoms">BOTTOMS</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="basics">BASICS</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="clearance">CLEARANCE</a></li>
+                <li><a href="#" class="mobile-nav-item" data-category="carpet"></a>CARPET</li>
+                <li><a href="#" class="mobile-nav-item" data-category="curtain">CURTAIN</a></li>
+                <li><a href="#" class="mobile-nav-item" data-category="doormate">DOORMATE </a></li>
+                <li><a href="#" class="mobile-nav-item" data-category="house care">HOUSE CARE</a></li>
             </ul>
         </div>
     </header>
-
-    <!-- Sidebar Toggle -->
-    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <h3>📂 Categories</h3>
-        <ul class="category-list">
-            <li class="active" data-category="all">🛍️ All Products</li>
-            <li data-category="tops">👕 Tops & Shirts</li>
-            <li data-category="bottoms">👖 Pants & Bottoms</li>
-            <li data-category="basics">👔 Basic Wear</li>
-            <li data-category="clearance">🔥 Clearance Sale</li>
-        </ul>
-        
-        <h3>💰 Price Range</h3>
-        <div style="margin-top: 15px;">
-            <input type="range" min="500" max="5000" value="5000" class="price-range" id="priceRange">
-            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: 8px; color: var(--text-secondary);">
-                <span>₹500</span>
-                <span id="currentPrice">₹5000</span>
-                <span>₹5000</span>
-            </div>
-        </div>
-
-        <h3>🎨 Quick Actions</h3>
-        <div style="margin-top: 15px;">
-            <button onclick="resetFilters()" style="width: 100%; padding: 10px; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer; margin-bottom: 10px; transition: all 0.3s ease; font-size: 14px;">
-                Reset Filters
-            </button>
-            <button onclick="showOnSale()" style="width: 100%; padding: 10px; background: var(--sale-badge); color: white; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; font-size: 14px;">
-                Show Sale Items
-            </button>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <main class="main-content" id="mainContent">
@@ -1062,7 +957,7 @@
     <!-- Product Modal -->
     <div id="productModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()">✕</span>
             <div id="modalContent">
                 <!-- Modal content will be loaded here -->
             </div>
@@ -1100,13 +995,20 @@
                 <option value="length">📏 Feet ↔ Meter</option>
                 <option value="currency">💱 INR ↔ NPR</option>
             </select>
-            <input type="number" id="converterInput" placeholder="Enter value" oninput="convert()" step="0.01">
-            <input type="text" id="converterOutput" readonly placeholder="Converted value">
+            <div style="display: flex; gap: 5px; align-items: center;">
+                <input type="number" id="converterInput" placeholder="Enter value" oninput="convert()" step="0.01" style="flex: 1;">
+                <button onclick="swapConversion()" style="background: var(--accent); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 16px;">⇄</button>
+                <input type="number" id="converterOutput" placeholder="Result" oninput="convertReverse()" step="0.01" style="flex: 1;">
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; color: var(--text-secondary);">
+                <span id="unitFrom">Feet</span>
+                <span id="unitTo">Meters</span>
+            </div>
         </div>
     </div>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/1234567890?text=Hi!%20I'm%20interested%20in%20your%20products%20from%20StyleHub%20website." class="whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
+    <a href="https://wa.me/1234567890?text=Hi!%20I'm%20interested%20in%20your%20products%20from%20Aarav%20Enterprise%20website." class="whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
         💬
     </a>
 
@@ -1217,9 +1119,7 @@
 
         let currentFilter = 'all';
         let calcOpen = false;
-        let sidebarOpen = false;
         let currentGridColumns = 3;
-        let maxPrice = 5000;
         let searchQuery = '';
         let currentTheme = 'dark';
 
@@ -1228,7 +1128,7 @@
             loadTheme();
             renderProducts();
             setupEventListeners();
-            updatePriceDisplay();
+            updateUnitLabels();
         });
 
         // Theme Functions
@@ -1271,32 +1171,6 @@
                 });
             });
 
-            // Sidebar categories
-            document.querySelectorAll('.category-list li').forEach(item => {
-                item.addEventListener('click', function() {
-                    document.querySelector('.category-list li.active').classList.remove('active');
-                    this.classList.add('active');
-                    const category = this.dataset.category;
-                    currentFilter = category;
-                    renderProducts(category);
-                    
-                    document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(nav => nav.classList.remove('active'));
-                    document.querySelectorAll(`[data-category="${category}"]`).forEach(nav => {
-                        if (nav.classList.contains('nav-item') || nav.classList.contains('mobile-nav-item')) {
-                            nav.classList.add('active');
-                        }
-                    });
-                });
-            });
-
-            // Price range slider
-            const priceRange = document.getElementById('priceRange');
-            priceRange.addEventListener('input', function() {
-                maxPrice = parseInt(this.value);
-                updatePriceDisplay();
-                renderProducts(currentFilter);
-            });
-
             // Close modal when clicking outside
             window.onclick = function(event) {
                 const modal = document.getElementById('productModal');
@@ -1333,8 +1207,6 @@
             const grid = document.getElementById('productsGrid');
             let filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
             
-            filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
-            
             if (searchQuery) {
                 filteredProducts = filteredProducts.filter(p => 
                     p.name.toLowerCase().includes(searchQuery) || 
@@ -1347,10 +1219,7 @@
                     <div class="no-results">
                         <div style="font-size: 64px; margin-bottom: 20px;">🔍</div>
                         <h3>${searchQuery ? 'No products found for "' + searchQuery + '"' : 'No products found'}</h3>
-                        <p>Try adjusting your filters or search query</p>
-                        <button onclick="resetFilters()" style="margin-top: 20px; padding: 12px 24px; background: var(--accent); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;">
-                            Reset Filters
-                        </button>
+                        <p>Try adjusting your search query</p>
                     </div>
                 `;
                 document.getElementById('productCount').textContent = '0 PRODUCTS';
@@ -1393,18 +1262,6 @@
             
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-        }
-
-        // Toggle sidebar
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
-            sidebarOpen = !sidebarOpen;
-            
-            sidebar.classList.toggle('open', sidebarOpen);
-            if (window.innerWidth > 1024) {
-                mainContent.classList.toggle('shifted', sidebarOpen);
-            }
         }
 
         // Set grid view
@@ -1481,7 +1338,7 @@
                         <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 12px; text-align: center;">
                             <h3 style="color: white; margin-bottom: 15px; font-size: 18px;">💬 Interested?</h3>
                             <p style="color: white; margin-bottom: 15px; opacity: 0.9;">Contact us on WhatsApp!</p>
-                            <a href="https://wa.me/1234567890?text=Hi! I'm interested in ${encodeURIComponent(product.name)}" 
+                            <a href="https://wa.me/1234567890?text=Hi! I'm interested in ${encodeURIComponent(product.name)} from Aarav Enterprise" 
                                target="_blank" 
                                style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 15px;">
                                 📱 Contact WhatsApp
@@ -1551,6 +1408,21 @@
         function resetConverter() {
             document.getElementById('converterInput').value = '';
             document.getElementById('converterOutput').value = '';
+            updateUnitLabels();
+        }
+
+        function updateUnitLabels() {
+            const type = document.getElementById('converterType').value;
+            const unitFrom = document.getElementById('unitFrom');
+            const unitTo = document.getElementById('unitTo');
+            
+            if (type === 'length') {
+                unitFrom.textContent = 'Feet';
+                unitTo.textContent = 'Meters';
+            } else if (type === 'currency') {
+                unitFrom.textContent = 'INR';
+                unitTo.textContent = 'NPR';
+            }
         }
 
         function convert() {
@@ -1564,87 +1436,49 @@
             }
             
             if (type === 'length') {
+                // Feet to Meters
                 const meters = (input * 0.3048).toFixed(4);
-                output.value = `${meters} meters`;
+                output.value = meters;
             } else if (type === 'currency') {
+                // INR to NPR (1 INR = 0.6 NPR)
                 const npr = (input * 0.6).toFixed(2);
-                output.value = `${npr} NPR`;
+                output.value = npr;
             }
         }
 
-        // Utility functions
-        function updatePriceDisplay() {
-            document.getElementById('currentPrice').textContent = `₹${maxPrice}`;
-        }
-
-        function resetFilters() {
-            currentFilter = 'all';
-            maxPrice = 5000;
-            searchQuery = '';
-            document.getElementById('priceRange').value = 5000;
-            document.getElementById('searchBox').value = '';
-            document.getElementById('searchBox').classList.remove('active');
-            updatePriceDisplay();
+        function convertReverse() {
+            const type = document.getElementById('converterType').value;
+            const output = parseFloat(document.getElementById('converterOutput').value);
+            const input = document.getElementById('converterInput');
             
-            document.querySelectorAll('.category-list li').forEach(item => item.classList.remove('active'));
-            document.querySelector('.category-list li[data-category="all"]').classList.add('active');
-            
-            document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('[data-category="all"]').forEach(item => {
-                if (item.classList.contains('nav-item') || item.classList.contains('mobile-nav-item')) {
-                    item.classList.add('active');
-                }
-            });
-            
-            renderProducts('all');
-        }
-
-        function showOnSale() {
-            const saleProducts = products.filter(p => p.discount > 0 && p.price <= maxPrice);
-            const grid = document.getElementById('productsGrid');
-            
-            if (saleProducts.length === 0) {
-                grid.innerHTML = `
-                    <div class="no-results">
-                        <div style="font-size: 64px; margin-bottom: 20px;">🔥</div>
-                        <h3>No sale items</h3>
-                        <p>Try adjusting your price filter</p>
-                    </div>
-                `;
-                document.getElementById('productCount').textContent = '0 PRODUCTS';
+            if (isNaN(output) || output < 0) {
+                input.value = '';
                 return;
             }
             
-            grid.innerHTML = saleProducts.map(product => `
-                <div class="product-card" onclick="openProductModal(${product.id})">
-                    <div class="product-image">
-                        <div class="sale-badge">SAVE ${product.discount}%</div>
-                        ${product.image ? 
-                            `<img src="${product.image}" alt="${product.name}" />` : 
-                            `<div class="placeholder-icon">${product.placeholder}</div>`
-                        }
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price">
-                            ₹${product.price.toLocaleString()}
-                            <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+            if (type === 'length') {
+                // Meters to Feet
+                const feet = (output / 0.3048).toFixed(4);
+                input.value = feet;
+            } else if (type === 'currency') {
+                // NPR to INR (1 NPR = 1.6667 INR)
+                const inr = (output / 0.6).toFixed(2);
+                input.value = inr;
+            }
+        }
 
-            document.getElementById('productCount').textContent = `${saleProducts.length} SALE PRODUCTS`;
+        function swapConversion() {
+            const input = document.getElementById('converterInput');
+            const output = document.getElementById('converterOutput');
+            
+            // Swap values
+            const temp = input.value;
+            input.value = output.value;
+            output.value = temp;
         }
 
         // Responsive handling
         window.addEventListener('resize', function() {
-            if (window.innerWidth <= 1024) {
-                document.getElementById('mainContent').classList.remove('shifted');
-            } else if (sidebarOpen) {
-                document.getElementById('mainContent').classList.add('shifted');
-            }
-            
             if (window.innerWidth > 768) {
                 document.getElementById('mobileMenu').classList.remove('active');
                 document.querySelector('.hamburger').classList.remove('active');
