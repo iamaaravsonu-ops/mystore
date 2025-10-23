@@ -374,6 +374,8 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            display: block;
+            background: var(--secondary-bg);
         }
 
         .product-card:hover .product-image img {
@@ -723,7 +725,6 @@
                 font-size: 16px;
             }
 
-            /* Calculator Mobile Optimization */
             .calculator {
                 width: 230px;
                 top: 140px;
@@ -754,7 +755,6 @@
                 font-size: 12px;
             }
 
-            /* WhatsApp Button Mobile */
             .whatsapp-btn {
                 width: 55px;
                 height: 55px;
@@ -763,7 +763,6 @@
                 right: 15px;
             }
 
-            /* Modal Mobile - Prominent Close Button */
             .modal-content {
                 width: 95%;
                 padding: 25px 20px;
@@ -843,7 +842,6 @@
                 font-size: 15px;
             }
 
-            /* Calculator Extra Small Screens */
             .calculator {
                 width: 220px;
                 transform: translateY(-420px);
@@ -876,7 +874,6 @@
             }
         }
 
-        /* Tablet Specific */
         @media (min-width: 769px) and (max-width: 1024px) {
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -902,7 +899,7 @@
                 <li><a href="#" class="nav-item active" data-category="all">NEW ARRIVALS</a></li>
                 <li><a href="#" class="nav-item" data-category="carpet">CARPET</a></li>
                 <li><a href="#" class="nav-item" data-category="curtain">CURTAIN</a></li>
-                <li><a href="#" class="nav-item" data-category="doormate">DOORMATE </a></li>
+                <li><a href="#" class="nav-item" data-category="doormate">DOORMATE</a></li>
                 <li><a href="#" class="nav-item" data-category="house care">HOUSE CARE</a></li>
             </ul>
             
@@ -930,9 +927,9 @@
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="#" class="mobile-nav-item active" data-category="all">NEW ARRIVALS</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="carpet"></a>CARPET</li>
+                <li><a href="#" class="mobile-nav-item" data-category="carpet">CARPET</a></li>
                 <li><a href="#" class="mobile-nav-item" data-category="curtain">CURTAIN</a></li>
-                <li><a href="#" class="mobile-nav-item" data-category="doormate">DOORMATE </a></li>
+                <li><a href="#" class="mobile-nav-item" data-category="doormate">DOORMATE</a></li>
                 <li><a href="#" class="mobile-nav-item" data-category="house care">HOUSE CARE</a></li>
             </ul>
         </div>
@@ -1008,7 +1005,7 @@
     </div>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/1234567890?text=Hi!%20I'm%20interested%20in%20your%20products%20from%20Aarav%20Enterprise%20website." class="whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
+    <a href="https://wa.me/9060681818?text=Hi!%20I'm%20interested%20in%20your%20products%20from%20Aarav%20Enterprise%20website." class="whatsapp-btn" target="_blank" title="Contact us on WhatsApp">
         💬
     </a>
 
@@ -1017,13 +1014,14 @@
         const products = [
             {
                 id: 1,
-                name: "TYPHOON BLACK UNISEX STRAIGHT FIT BAGGY PANTS",
+                name: "Premium Luxury Carpet - Showroom Collection",
                 price: 1799,
                 originalPrice: 3199,
                 discount: 44,
-                category: "bottoms",
-                image: "https://i.ibb.co/mVpQqvxn/Alone-they-are-powerful-Together-they-are-inevitable-ghibliglimmers-aiart-pcwallpap-3.jpg" alt="Showroom Image",
-                placeholder: "👖"
+                category: "carpet",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
+                image: "https://i.imghippo.com/files/sPwq6746lLI.webp",
+                placeholder: "🖼️"
             },
             {
                 id: 2,
@@ -1031,7 +1029,8 @@
                 price: 999,
                 originalPrice: 2199,
                 discount: 55,
-                category: "tops",
+                category: "curtain",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/87CEEB/ffffff?text=Blue+Vest",
                 placeholder: "👕"
             },
@@ -1041,7 +1040,8 @@
                 price: 1699,
                 originalPrice: 3199,
                 discount: 47,
-                category: "bottoms",
+                category: "doormate",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/f5f5f5/000000?text=White+Pants",
                 placeholder: "👖"
             },
@@ -1051,7 +1051,8 @@
                 price: 999,
                 originalPrice: 2199,
                 discount: 55,
-                category: "tops",
+                category: "house care",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/808000/ffffff?text=Olive+Vest",
                 placeholder: "👕"
             },
@@ -1061,7 +1062,8 @@
                 price: 2299,
                 originalPrice: 3999,
                 discount: 42,
-                category: "tops",
+                category: "carpet",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/2c2c2c/ffffff?text=Black+Hoodie",
                 placeholder: "🧥"
             },
@@ -1071,7 +1073,8 @@
                 price: 1499,
                 originalPrice: 2799,
                 discount: 46,
-                category: "bottoms",
+                category: "curtain",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/DC143C/ffffff?text=Red+Joggers",
                 placeholder: "👖"
             },
@@ -1081,7 +1084,8 @@
                 price: 799,
                 originalPrice: 1399,
                 discount: 43,
-                category: "basics",
+                category: "doormate",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/4682B4/ffffff?text=Blue+Tshirt",
                 placeholder: "👕"
             },
@@ -1091,7 +1095,8 @@
                 price: 1299,
                 originalPrice: 2199,
                 discount: 41,
-                category: "bottoms",
+                category: "house care",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/708090/ffffff?text=Grey+Shorts",
                 placeholder: "🩳"
             },
@@ -1101,7 +1106,8 @@
                 price: 2599,
                 originalPrice: 4299,
                 discount: 40,
-                category: "tops",
+                category: "carpet",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/0000FF/ffffff?text=Blue+Jacket",
                 placeholder: "🧥"
             },
@@ -1111,7 +1117,8 @@
                 price: 599,
                 originalPrice: 999,
                 discount: 40,
-                category: "basics",
+                category: "curtain",
+                // <!-- PASTE PRODUCT IMAGE LINK HERE -->
                 image: "https://via.placeholder.com/300x320/ffffff/000000?text=White+Tee",
                 placeholder: "👔"
             }
@@ -1230,8 +1237,9 @@
                 <div class="product-card" onclick="openProductModal(${product.id})">
                     <div class="product-image">
                         ${product.discount ? `<div class="sale-badge">SAVE ${product.discount}%</div>` : ''}
-                        ${product.image ? 
-                            `<img src="${product.image}" alt="${product.name}" />` : 
+                        ${product.image && product.image.length > 10 ? 
+                            `<img src="${product.image}" alt="${product.name}" onload="console.log('Image loaded:', this.src)" onerror="console.error('Image error:', this.src); this.style.display='none'; this.parentElement.querySelector('.placeholder-icon').style.display='flex';">
+                            <div class="placeholder-icon" style="display:none;">${product.placeholder}</div>` : 
                             `<div class="placeholder-icon">${product.placeholder}</div>`
                         }
                     </div>
@@ -1436,11 +1444,9 @@
             }
             
             if (type === 'length') {
-                // Feet to Meters
                 const meters = (input * 0.3048).toFixed(4);
                 output.value = meters;
             } else if (type === 'currency') {
-                // INR to NPR (1 INR = 0.6 NPR)
                 const npr = (input * 0.6).toFixed(2);
                 output.value = npr;
             }
@@ -1457,11 +1463,9 @@
             }
             
             if (type === 'length') {
-                // Meters to Feet
                 const feet = (output / 0.3048).toFixed(4);
                 input.value = feet;
             } else if (type === 'currency') {
-                // NPR to INR (1 NPR = 1.6667 INR)
                 const inr = (output / 0.6).toFixed(2);
                 input.value = inr;
             }
@@ -1471,7 +1475,6 @@
             const input = document.getElementById('converterInput');
             const output = document.getElementById('converterOutput');
             
-            // Swap values
             const temp = input.value;
             input.value = output.value;
             output.value = temp;
@@ -1492,14 +1495,12 @@
             const calculator = document.getElementById('calculator');
             const calcIcon = e.target.closest('.nav-icon');
             
-            // Close search if clicking outside
             if (!searchContainer.contains(e.target) && searchBox.classList.contains('active')) {
                 if (searchBox.value === '') {
                     searchBox.classList.remove('active');
                 }
             }
             
-            // Close calculator if clicking outside (but not on calculator icon)
             if (!calculator.contains(e.target) && calcOpen && (!calcIcon || calcIcon.textContent !== '🖩')) {
                 calculator.classList.remove('open');
                 calcOpen = false;
