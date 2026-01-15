@@ -854,6 +854,104 @@
 
         .product-card {
             animation: fadeIn 0.5s ease-in-out;
+            /* Carpet Calculator Specific Styles */
+.carpet-calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.carpet-calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.carpet-calc-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.carpet-calc-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 16px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.carpet-calc-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.carpet-calc-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.carpet-calc-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.carpet-calc-result {
+    padding: 20px;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carpet-result-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.carpet-result-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.carpet-calc-error {
+    padding: 12px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    display: none;
+}
+
+[data-theme="dark"] .carpet-calc-error {
+    background-color: #5d1f1f;
+    color: #ff5252;
+}
+
+.carpet-calc-error.show {
+    display: block;
+}
+
         }
     </style>
 </head>
@@ -1019,36 +1117,59 @@
                 </div>
             </div>
             <div class="calc-body">
-                <!-- Calculator -->
-                <div class="calculator-view active" id="calculatorView">
-                    <div class="calc-display" id="calcDisplay">0</div>
-                    <div class="calc-buttons">
-                        <button class="calc-btn clear" data-action="clear">C</button>
-                        <button class="calc-btn" data-action="delete">⌫</button>
-                        <button class="calc-btn operator" data-value="%">%</button>
-                        <button class="calc-btn operator" data-value="/">÷</button>
-                        
-                        <button class="calc-btn" data-value="7">7</button>
-                        <button class="calc-btn" data-value="8">8</button>
-                        <button class="calc-btn" data-value="9">9</button>
-                        <button class="calc-btn operator" data-value="*">×</button>
-                        
-                        <button class="calc-btn" data-value="4">4</button>
-                        <button class="calc-btn" data-value="5">5</button>
-                        <button class="calc-btn" data-value="6">6</button>
-                        <button class="calc-btn operator" data-value="-">−</button>
-                        
-                        <button class="calc-btn" data-value="1">1</button>
-                        <button class="calc-btn" data-value="2">2</button>
-                        <button class="calc-btn" data-value="3">3</button>
-                        <button class="calc-btn operator" data-value="+">+</button>
-                        
-                        <button class="calc-btn" data-value="0">0</button>
-                        <button class="calc-btn" data-value=".">.</button>
-                        <button class="calc-btn equals" data-action="equals">=</button>
-                    </div>
-                </div>
+                
+               
+                    <!-- Carpet Length Calculator -->
+<div class="calculator-view active" id="calculatorView">
+    <form class="carpet-calculator-form" id="carpetCalculatorForm">
+        <div class="carpet-calc-group">
+            <label class="carpet-calc-label" for="carpetRoomLength">Room Length (feet)</label>
+            <input 
+                type="number" 
+                class="carpet-calc-input" 
+                id="carpetRoomLength" 
+                placeholder="e.g., 20"
+                min="0"
+                step="0.1"
+            >
+        </div>
 
+        <div class="carpet-calc-group">
+            <label class="carpet-calc-label" for="carpetRoomWidth">Room Width (feet)</label>
+            <input 
+                type="number" 
+                class="carpet-calc-input" 
+                id="carpetRoomWidth" 
+                placeholder="e.g., 15"
+                min="0"
+                step="0.1"
+            >
+        </div>
+
+        <div class="carpet-calc-group">
+            <label class="carpet-calc-label" for="carpetWidth">Carpet Width (feet)</label>
+            <input 
+                type="number" 
+                class="carpet-calc-input" 
+                id="carpetWidth" 
+                placeholder="e.g., 12"
+                min="0"
+                step="0.1"
+            >
+        </div>
+
+        <div class="carpet-calc-error" id="carpetCalcError">
+            Please fill in all fields with valid numbers
+        </div>
+
+        <button type="submit" class="carpet-calc-btn">Calculate</button>
+
+        <div class="carpet-calc-result" id="carpetCalcResult" style="display: none;">
+            <div class="carpet-result-value" id="carpetResultValue">0.00</div>
+            <div class="carpet-result-label">Meters of Carpet Required</div>
+        </div>
+    </form>
+</div>
                 <!-- Currency Converter -->
                 <div class="currency-converter" id="currencyConverter">
                     <div class="currency-group">
@@ -1336,92 +1457,79 @@
             });
         });
 
-        // Calculator Logic
-        let calcDisplay = document.getElementById('calcDisplay');
-        let currentValue = '0';
-        let previousValue = null;
-        let operation = null;
-        let shouldResetDisplay = false;
+      
+        // Carpet Length Calculator Logic
+const carpetCalculatorForm = document.getElementById('carpetCalculatorForm');
+const carpetRoomLength = document.getElementById('carpetRoomLength');
+const carpetRoomWidth = document.getElementById('carpetRoomWidth');
+const carpetWidth = document.getElementById('carpetWidth');
+const carpetCalcError = document.getElementById('carpetCalcError');
+const carpetCalcResult = document.getElementById('carpetCalcResult');
+const carpetResultValue = document.getElementById('carpetResultValue');
 
-        const calcButtons = document.querySelectorAll('.calc-btn');
-        
-        calcButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const action = button.dataset.action;
-                const value = button.dataset.value;
-                
-                if (action === 'clear') {
-                    currentValue = '0';
-                    previousValue = null;
-                    operation = null;
-                    updateDisplay();
-                } else if (action === 'delete') {
-                    if (currentValue.length > 1) {
-                        currentValue = currentValue.slice(0, -1);
-                    } else {
-                        currentValue = '0';
-                    }
-                    updateDisplay();
-                } else if (action === 'equals') {
-                    if (operation && previousValue !== null) {
-                        currentValue = calculate(previousValue, currentValue, operation);
-                        operation = null;
-                        previousValue = null;
-                        shouldResetDisplay = true;
-                        updateDisplay();
-                    }
-                } else if (value) {
-                    if (['+', '-', '*', '/', '%'].includes(value)) {
-                        if (operation && previousValue !== null && !shouldResetDisplay) {
-                            currentValue = calculate(previousValue, currentValue, operation);
-                            updateDisplay();
-                        }
-                        previousValue = currentValue;
-                        operation = value;
-                        shouldResetDisplay = true;
-                    } else {
-                        if (shouldResetDisplay) {
-                            currentValue = value;
-                            shouldResetDisplay = false;
-                        } else {
-                            if (currentValue === '0' && value !== '.') {
-                                currentValue = value;
-                            } else if (value === '.' && currentValue.includes('.')) {
-                                return;
-                            } else {
-                                currentValue += value;
-                            }
-                        }
-                        updateDisplay();
-                    }
-                }
-            });
+if (carpetCalculatorForm) {
+    carpetCalculatorForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        calculateCarpetLength();
+    });
+}
+
+function calculateCarpetLength() {
+    // Get input values
+    const roomLength = parseFloat(carpetRoomLength.value);
+    const roomWidth = parseFloat(carpetRoomWidth.value);
+    const carpetWidthValue = parseFloat(carpetWidth.value);
+
+    // Hide previous results and errors
+    carpetCalcError.classList.remove('show');
+    carpetCalcResult.style.display = 'none';
+
+    // Validation
+    if (!roomLength || !roomWidth || !carpetWidthValue || 
+        roomLength <= 0 || roomWidth <= 0 || carpetWidthValue <= 0) {
+        carpetCalcError.classList.add('show');
+        return;
+    }
+
+    // Calculate number of carpet strips needed
+    const numberOfStrips = Math.ceil(roomWidth / carpetWidthValue);
+
+    // Calculate total carpet length in feet
+    const totalLengthFeet = numberOfStrips * roomLength;
+
+    // Convert to meters (1 foot = 0.3048 meters)
+    const totalLengthMeters = totalLengthFeet * 0.3048;
+
+    // Display result
+    carpetResultValue.textContent = totalLengthMeters.toFixed(2);
+    carpetCalcResult.style.display = 'block';
+}
+
+// Clear inputs when modal is closed
+function clearCarpetCalculator() {
+    if (carpetRoomLength) carpetRoomLength.value = '';
+    if (carpetRoomWidth) carpetRoomWidth.value = '';
+    if (carpetWidth) carpetWidth.value = '';
+    if (carpetCalcError) carpetCalcError.classList.remove('show');
+    if (carpetCalcResult) carpetCalcResult.style.display = 'none';
+}
+
+// Hook into existing modal close functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const closeCalcBtn = document.getElementById('closeCalculatorModal');
+    if (closeCalcBtn) {
+        closeCalcBtn.addEventListener('click', clearCarpetCalculator);
+    }
+    
+    const calculatorModal = document.getElementById('calculatorModal');
+    if (calculatorModal) {
+        calculatorModal.addEventListener('click', function(e) {
+            if (e.target === calculatorModal) {
+                clearCarpetCalculator();
+            }
         });
-
-        function calculate(a, b, op) {
-            const numA = parseFloat(a);
-            const numB = parseFloat(b);
-            
-            switch(op) {
-                case '+': return String(numA + numB);
-                case '-': return String(numA - numB);
-                case '*': return String(numA * numB);
-                case '/': return numB !== 0 ? String(numA / numB) : 'Error';
-                case '%': return String(numA % numB);
-                default: return b;
-            }
-        }
-
-        function updateDisplay() {
-            const displayValue = parseFloat(currentValue);
-            if (!isNaN(displayValue)) {
-                calcDisplay.textContent = displayValue.toLocaleString('en-US', { 
-                    maximumFractionDigits: 8 
-                });
-            } else {
-                calcDisplay.textContent = currentValue;
-            }
-        }
+    }
+});
 
         // Currency Converter
         const nprInput = document.getElementById('nprInput');
