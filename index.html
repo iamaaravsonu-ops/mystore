@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,6 +119,7 @@
             max-height: 500px;
             overflow: hidden;
             background-color: var(--bg-primary);
+            touch-action: pan-y pinch-zoom;
         }
 
         .carousel-container {
@@ -145,6 +147,8 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            pointer-events: none;
+            user-select: none;
         }
 
         /* Carousel Navigation Buttons */
@@ -668,11 +672,12 @@
         .calculator-modal {
             background-color: var(--bg-secondary);
             width: 90%;
-            max-width: 400px;
-            border-radius: 12px;
+            max-width: 500px;
+            border-radius: 16px;
             overflow: hidden;
             transform: scale(0.9);
             transition: transform 0.3s ease-in-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .modal-overlay.active .calculator-modal {
@@ -680,97 +685,203 @@
         }
 
         .calc-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 24px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #b71c1c 100%);
+            color: white;
             position: relative;
         }
 
         .calc-header h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
         }
 
         .calc-tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 4px;
+            border-radius: 8px;
         }
 
         .calc-tab {
             flex: 1;
-            padding: 8px;
-            background: none;
-            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            background: transparent;
+            border: none;
             cursor: pointer;
-            font-size: 13px;
-            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
             transition: var(--transition);
+            border-radius: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .calc-tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
         .calc-tab.active {
-            background-color: var(--text-primary);
-            color: var(--bg-secondary);
-            border-color: var(--text-primary);
+            background-color: white;
+            color: var(--accent-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .calc-body {
-            padding: 20px;
+            padding: 24px;
         }
 
-        /* Calculator Display */
-        .calc-display {
-            background-color: var(--bg-primary);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: right;
-            font-size: 32px;
-            font-weight: 300;
-            min-height: 60px;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+        /* Carpet Calculator Styles */
+        .calculator-view {
+            display: none;
         }
 
-        /* Calculator Buttons */
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .calculator-view.active {
+            display: block;
+        }
+
+        .carpet-calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .carpet-calc-group {
+            display: flex;
+            flex-direction: column;
             gap: 10px;
         }
 
-        .calc-btn {
-            padding: 20px;
-            border: none;
+        .carpet-calc-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .carpet-calc-label::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .carpet-calc-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: var(--transition);
+            font-size: 16px;
             font-weight: 500;
+            border-radius: 10px;
+            transition: var(--transition);
+            font-family: inherit;
         }
 
-        .calc-btn:hover {
-            background-color: var(--border-color);
+        .carpet-calc-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: var(--bg-secondary);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
 
-        .calc-btn.operator {
-            background-color: var(--accent-color);
+        .carpet-calc-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .carpet-calc-error {
+            display: none;
+            padding: 12px 16px;
+            background-color: #ffebee;
+            color: #c62828;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            border-left: 4px solid #c62828;
+        }
+
+        .carpet-calc-error.show {
+            display: block;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .carpet-calc-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #b71c1c 100%);
             color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
         }
 
-        .calc-btn.operator:hover {
-            opacity: 0.9;
+        .carpet-calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(211, 47, 47, 0.4);
         }
 
-        .calc-btn.equals {
-            grid-column: span 2;
-            background-color: var(--text-primary);
-            color: var(--bg-secondary);
+        .carpet-calc-btn:active {
+            transform: translateY(0);
         }
 
-        .calc-btn.clear {
-            background-color: var(--text-secondary);
-            color: white;
+        .carpet-calc-result {
+            display: none;
+            padding: 24px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #66bb6a;
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .carpet-result-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: #2e7d32;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .carpet-result-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1b5e20;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Currency Converter */
@@ -788,56 +899,69 @@
 
         .currency-group label {
             display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         .currency-input {
             width: 100%;
-            padding: 15px;
-            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
             background-color: var(--bg-primary);
             color: var(--text-primary);
             font-size: 18px;
-            border-radius: 8px;
+            font-weight: 500;
+            border-radius: 10px;
             transition: var(--transition);
+            font-family: inherit;
         }
 
         .currency-input:focus {
             outline: none;
             border-color: var(--accent-color);
+            background-color: var(--bg-secondary);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
 
         .conversion-rate {
-            margin-top: 10px;
-            padding: 15px;
+            margin-top: 16px;
+            padding: 16px;
             background-color: var(--bg-primary);
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
         }
 
         .swap-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 20px;
             background-color: var(--text-primary);
             color: var(--bg-secondary);
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .swap-btn:hover {
-            opacity: 0.9;
+            background-color: var(--accent-color);
+            transform: scale(1.02);
         }
 
         /* Loading Animation */
@@ -854,104 +978,29 @@
 
         .product-card {
             animation: fadeIn 0.5s ease-in-out;
-            /* Carpet Calculator Specific Styles */
-.carpet-calculator-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+        }
 
-.carpet-calc-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        /* Mobile Responsive Improvements */
+        @media (max-width: 768px) {
+            .calculator-modal {
+                max-width: 95%;
+            }
 
-.carpet-calc-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+            .calc-header {
+                padding: 20px;
+            }
 
-.carpet-calc-input {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid var(--border-color);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-size: 16px;
-    border-radius: 8px;
-    transition: var(--transition);
-}
+            .calc-header h3 {
+                font-size: 18px;
+            }
 
-.carpet-calc-input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-}
+            .calc-body {
+                padding: 20px;
+            }
 
-.carpet-calc-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
-
-.carpet-calc-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-.carpet-calc-result {
-    padding: 20px;
-    background-color: var(--bg-primary);
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.carpet-result-value {
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 5px;
-}
-
-.carpet-result-label {
-    font-size: 14px;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.carpet-calc-error {
-    padding: 12px;
-    background-color: #ffebee;
-    color: #c62828;
-    border-radius: 8px;
-    font-size: 14px;
-    text-align: center;
-    display: none;
-}
-
-[data-theme="dark"] .carpet-calc-error {
-    background-color: #5d1f1f;
-    color: #ff5252;
-}
-
-.carpet-calc-error.show {
-    display: block;
-}
-
+            .carpet-result-value {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
@@ -991,7 +1040,7 @@
     </header>
 
     <!-- Hero Carousel Section with 3 Slides -->
-    <div class="hero-carousel">
+    <div class="hero-carousel" id="heroCarousel">
         <div class="carousel-container">
             <div class="carousel-slides" id="carouselSlides">
                 <!-- Slide 1 -->
@@ -1110,73 +1159,75 @@
                 </svg>
             </button>
             <div class="calc-header">
-                <h3>Tools</h3>
+                <h3>Calculation Tools</h3>
                 <div class="calc-tabs">
-                    <button class="calc-tab active" data-tab="calculator">Calculator</button>
+                    <button class="calc-tab active" data-tab="calculator">Carpet Calculator</button>
                     <button class="calc-tab" data-tab="converter">Currency</button>
                 </div>
             </div>
             <div class="calc-body">
-                
-               
-                    <!-- Carpet Length Calculator -->
-<div class="calculator-view active" id="calculatorView">
-    <form class="carpet-calculator-form" id="carpetCalculatorForm">
-        <div class="carpet-calc-group">
-            <label class="carpet-calc-label" for="carpetRoomLength">Room Length (feet)</label>
-            <input 
-                type="number" 
-                class="carpet-calc-input" 
-                id="carpetRoomLength" 
-                placeholder="e.g., 20"
-                min="0"
-                step="0.1"
-            >
-        </div>
+                <!-- Carpet Length Calculator -->
+                <div class="calculator-view active" id="calculatorView">
+                    <form class="carpet-calculator-form" id="carpetCalculatorForm">
+                        <div class="carpet-calc-group">
+                            <label class="carpet-calc-label" for="carpetRoomLength">Room Length (feet)</label>
+                            <input 
+                                type="number" 
+                                class="carpet-calc-input" 
+                                id="carpetRoomLength" 
+                                placeholder="e.g., 20"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
 
-        <div class="carpet-calc-group">
-            <label class="carpet-calc-label" for="carpetRoomWidth">Room Width (feet)</label>
-            <input 
-                type="number" 
-                class="carpet-calc-input" 
-                id="carpetRoomWidth" 
-                placeholder="e.g., 15"
-                min="0"
-                step="0.1"
-            >
-        </div>
+                        <div class="carpet-calc-group">
+                            <label class="carpet-calc-label" for="carpetRoomWidth">Room Width (feet)</label>
+                            <input 
+                                type="number" 
+                                class="carpet-calc-input" 
+                                id="carpetRoomWidth" 
+                                placeholder="e.g., 15"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
 
-        <div class="carpet-calc-group">
-            <label class="carpet-calc-label" for="carpetWidth">Carpet Width (feet)</label>
-            <input 
-                type="number" 
-                class="carpet-calc-input" 
-                id="carpetWidth" 
-                placeholder="e.g., 12"
-                min="0"
-                step="0.1"
-            >
-        </div>
+                        <div class="carpet-calc-group">
+                            <label class="carpet-calc-label" for="carpetWidth">Carpet Width (feet)</label>
+                            <input 
+                                type="number" 
+                                class="carpet-calc-input" 
+                                id="carpetWidth" 
+                                placeholder="e.g., 12"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
 
-        <div class="carpet-calc-error" id="carpetCalcError">
-            Please fill in all fields with valid numbers
-        </div>
+                        <div class="carpet-calc-error" id="carpetCalcError">
+                            ⚠️ Please fill in all fields with valid numbers
+                        </div>
 
-        <button type="submit" class="carpet-calc-btn">Calculate</button>
+                        <button type="submit" class="carpet-calc-btn">Calculate Length</button>
 
-        <div class="carpet-calc-result" id="carpetCalcResult" style="display: none;">
-            <div class="carpet-result-value" id="carpetResultValue">0.00</div>
-            <div class="carpet-result-label">Meters of Carpet Required</div>
-        </div>
-    </form>
-</div>
+                        <div class="carpet-calc-result" id="carpetCalcResult">
+                            <div class="carpet-result-value" id="carpetResultValue">0.00</div>
+                            <div class="carpet-result-label">Meters of Carpet Required</div>
+                        </div>
+                    </form>
+                </div>
+
                 <!-- Currency Converter -->
                 <div class="currency-converter" id="currencyConverter">
                     <div class="currency-group">
                         <label>Nepali Rupees (NPR)</label>
                         <input type="number" class="currency-input" id="nprInput" placeholder="0.00">
                     </div>
-                    <button class="swap-btn" id="swapBtn">⇅ SWAP</button>
+                    <button class="swap-btn" id="swapBtn">
+                        <span>⇅</span>
+                        <span>SWAP</span>
+                    </button>
                     <div class="currency-group">
                         <label>Indian Rupees (INR)</label>
                         <input type="number" class="currency-input" id="inrInput" placeholder="0.00">
@@ -1223,15 +1274,25 @@
 
     <script>
         // WhatsApp Configuration
-        const WHATSAPP_NUMBER = '+919060681818'; // Change this to your actual WhatsApp number
+        const WHATSAPP_NUMBER = '+919060681818';
         
-        // Carousel Functionality
+        // ========================================
+        // CAROUSEL FUNCTIONALITY WITH MOBILE SWIPE
+        // ========================================
         let currentSlide = 0;
         const totalSlides = 3;
         const carouselSlides = document.getElementById('carouselSlides');
+        const heroCarousel = document.getElementById('heroCarousel');
         const dots = document.querySelectorAll('.carousel-dot');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+
+        // Touch handling variables
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const minSwipeDistance = 50;
 
         function updateCarousel() {
             carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -1261,7 +1322,47 @@
             updateCarousel();
         }
 
-        // Event listeners for carousel
+        // Touch event handlers for mobile swipe
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+
+        function handleTouchMove(e) {
+            // Prevent default only if swiping horizontally
+            const touchMoveX = e.touches[0].clientX;
+            const touchMoveY = e.touches[0].clientY;
+            const diffX = Math.abs(touchMoveX - touchStartX);
+            const diffY = Math.abs(touchMoveY - touchStartY);
+            
+            if (diffX > diffY) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].clientX;
+            touchEndY = e.changedTouches[0].clientY;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeDistanceX = touchEndX - touchStartX;
+            const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+            
+            // Only register as swipe if horizontal movement is greater than vertical
+            if (Math.abs(swipeDistanceX) > minSwipeDistance && Math.abs(swipeDistanceX) > swipeDistanceY) {
+                if (swipeDistanceX < 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+            }
+        }
+
+        // Event listeners for carousel buttons
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
 
@@ -1269,19 +1370,34 @@
             dot.addEventListener('click', () => goToSlide(index));
         });
 
+        // Add touch event listeners for mobile swipe
+        heroCarousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        heroCarousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+        heroCarousel.addEventListener('touchend', handleTouchEnd, { passive: true });
+
         // Auto-play carousel every 5 seconds
         let autoplayInterval = setInterval(nextSlide, 5000);
 
-        // Pause autoplay on hover
-        document.querySelector('.hero-carousel').addEventListener('mouseenter', () => {
+        // Pause autoplay on hover or touch
+        heroCarousel.addEventListener('mouseenter', () => {
             clearInterval(autoplayInterval);
         });
 
-        document.querySelector('.hero-carousel').addEventListener('mouseleave', () => {
+        heroCarousel.addEventListener('mouseleave', () => {
             autoplayInterval = setInterval(nextSlide, 5000);
         });
 
-        // Product Data - 4 Categories with 5 Products Each (Total: 20)
+        heroCarousel.addEventListener('touchstart', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        heroCarousel.addEventListener('touchend', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        });
+
+        // ========================================
+        // PRODUCT DATA
+        // ========================================
         const productsByCategory = {
             carpet: [
                 { name: "PERSIAN LUXE CARPET", price: 300, originalPrice: 500, discount: 38, image: "product2.jpg" },
@@ -1316,7 +1432,9 @@
         // Store current product for WhatsApp message
         let currentProduct = null;
 
-        // Render Products for Each Category
+        // ========================================
+        // RENDER PRODUCTS
+        // ========================================
         function renderProducts(category, gridId) {
             const grid = document.getElementById(gridId);
             const products = productsByCategory[category];
@@ -1347,7 +1465,9 @@
                 `;
                 
                 card.addEventListener('click', (e) => {
+                    // Prevent opening modal if clicking the add button
                     if (!e.target.closest('.add-btn')) {
+                        e.preventDefault();
                         openProductModal(product);
                     }
                 });
@@ -1362,7 +1482,9 @@
         renderProducts('doormat', 'doormatGrid');
         renderProducts('more', 'moreGrid');
 
-        // Category Tab Switching
+        // ========================================
+        // CATEGORY TAB SWITCHING
+        // ========================================
         const categoryTabs = document.querySelectorAll('.category-tab');
         const categorySections = document.querySelectorAll('.category-section');
         
@@ -1385,7 +1507,9 @@
             });
         });
 
-        // Product Modal
+        // ========================================
+        // PRODUCT MODAL (INTERNAL NAVIGATION)
+        // ========================================
         const productModal = document.getElementById('productModal');
         const closeProductModalBtn = document.getElementById('closeProductModal');
         const whatsappQueryBtn = document.getElementById('whatsappQueryBtn');
@@ -1401,6 +1525,9 @@
             const message = `Hi, I'm interested in ${product.name} (RS. ${product.price}). Can you provide more details?`;
             whatsappQueryBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             
+            // Add URL hash for internal navigation (doesn't navigate away)
+            window.history.pushState({ modal: 'product' }, '', '#product');
+            
             productModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1409,19 +1536,46 @@
             productModal.classList.remove('active');
             document.body.style.overflow = '';
             currentProduct = null;
+            
+            // Remove hash from URL if present
+            if (window.location.hash === '#product') {
+                window.history.back();
+            }
         }
         
-        closeProductModalBtn.addEventListener('click', closeProductModal);
+        closeProductModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeProductModal();
+        });
+        
         productModal.addEventListener('click', (e) => {
-            if (e.target === productModal) closeProductModal();
+            if (e.target === productModal) {
+                closeProductModal();
+            }
         });
 
-        // Calculator Modal
+        // Handle browser back button
+        window.addEventListener('popstate', (e) => {
+            if (productModal.classList.contains('active')) {
+                productModal.classList.remove('active');
+                document.body.style.overflow = '';
+                currentProduct = null;
+            }
+            if (calculatorModal.classList.contains('active')) {
+                calculatorModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ========================================
+        // CALCULATOR MODAL
+        // ========================================
         const calculatorBtn = document.getElementById('calculatorBtn');
         const calculatorModal = document.getElementById('calculatorModal');
         const closeCalculatorModalBtn = document.getElementById('closeCalculatorModal');
         
         calculatorBtn.addEventListener('click', () => {
+            window.history.pushState({ modal: 'calculator' }, '', '#calculator');
             calculatorModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
@@ -1429,6 +1583,11 @@
         function closeCalculatorModal() {
             calculatorModal.classList.remove('active');
             document.body.style.overflow = '';
+            clearCarpetCalculator();
+            
+            if (window.location.hash === '#calculator') {
+                window.history.back();
+            }
         }
         
         closeCalculatorModalBtn.addEventListener('click', closeCalculatorModal);
@@ -1436,7 +1595,9 @@
             if (e.target === calculatorModal) closeCalculatorModal();
         });
 
-        // Calculator Tabs
+        // ========================================
+        // CALCULATOR TABS
+        // ========================================
         const calcTabs = document.querySelectorAll('.calc-tab');
         const calculatorView = document.getElementById('calculatorView');
         const currencyConverter = document.getElementById('currencyConverter');
@@ -1457,81 +1618,67 @@
             });
         });
 
-      
-        // Carpet Length Calculator Logic
-const carpetCalculatorForm = document.getElementById('carpetCalculatorForm');
-const carpetRoomLength = document.getElementById('carpetRoomLength');
-const carpetRoomWidth = document.getElementById('carpetRoomWidth');
-const carpetWidth = document.getElementById('carpetWidth');
-const carpetCalcError = document.getElementById('carpetCalcError');
-const carpetCalcResult = document.getElementById('carpetCalcResult');
-const carpetResultValue = document.getElementById('carpetResultValue');
+        // ========================================
+        // CARPET LENGTH CALCULATOR
+        // ========================================
+        const carpetCalculatorForm = document.getElementById('carpetCalculatorForm');
+        const carpetRoomLength = document.getElementById('carpetRoomLength');
+        const carpetRoomWidth = document.getElementById('carpetRoomWidth');
+        const carpetWidth = document.getElementById('carpetWidth');
+        const carpetCalcError = document.getElementById('carpetCalcError');
+        const carpetCalcResult = document.getElementById('carpetCalcResult');
+        const carpetResultValue = document.getElementById('carpetResultValue');
 
-if (carpetCalculatorForm) {
-    carpetCalculatorForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        calculateCarpetLength();
-    });
-}
+        if (carpetCalculatorForm) {
+            carpetCalculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                calculateCarpetLength();
+            });
+        }
 
-function calculateCarpetLength() {
-    // Get input values
-    const roomLength = parseFloat(carpetRoomLength.value);
-    const roomWidth = parseFloat(carpetRoomWidth.value);
-    const carpetWidthValue = parseFloat(carpetWidth.value);
+        function calculateCarpetLength() {
+            // Get input values
+            const roomLength = parseFloat(carpetRoomLength.value);
+            const roomWidth = parseFloat(carpetRoomWidth.value);
+            const carpetWidthValue = parseFloat(carpetWidth.value);
 
-    // Hide previous results and errors
-    carpetCalcError.classList.remove('show');
-    carpetCalcResult.style.display = 'none';
+            // Hide previous results and errors
+            carpetCalcError.classList.remove('show');
+            carpetCalcResult.style.display = 'none';
 
-    // Validation
-    if (!roomLength || !roomWidth || !carpetWidthValue || 
-        roomLength <= 0 || roomWidth <= 0 || carpetWidthValue <= 0) {
-        carpetCalcError.classList.add('show');
-        return;
-    }
-
-    // Calculate number of carpet strips needed
-    const numberOfStrips = Math.ceil(roomWidth / carpetWidthValue);
-
-    // Calculate total carpet length in feet
-    const totalLengthFeet = numberOfStrips * roomLength;
-
-    // Convert to meters (1 foot = 0.3048 meters)
-    const totalLengthMeters = totalLengthFeet * 0.3048;
-
-    // Display result
-    carpetResultValue.textContent = totalLengthMeters.toFixed(2);
-    carpetCalcResult.style.display = 'block';
-}
-
-// Clear inputs when modal is closed
-function clearCarpetCalculator() {
-    if (carpetRoomLength) carpetRoomLength.value = '';
-    if (carpetRoomWidth) carpetRoomWidth.value = '';
-    if (carpetWidth) carpetWidth.value = '';
-    if (carpetCalcError) carpetCalcError.classList.remove('show');
-    if (carpetCalcResult) carpetCalcResult.style.display = 'none';
-}
-
-// Hook into existing modal close functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const closeCalcBtn = document.getElementById('closeCalculatorModal');
-    if (closeCalcBtn) {
-        closeCalcBtn.addEventListener('click', clearCarpetCalculator);
-    }
-    
-    const calculatorModal = document.getElementById('calculatorModal');
-    if (calculatorModal) {
-        calculatorModal.addEventListener('click', function(e) {
-            if (e.target === calculatorModal) {
-                clearCarpetCalculator();
+            // Validation
+            if (!roomLength || !roomWidth || !carpetWidthValue || 
+                roomLength <= 0 || roomWidth <= 0 || carpetWidthValue <= 0) {
+                carpetCalcError.classList.add('show');
+                return;
             }
-        });
-    }
-});
 
-        // Currency Converter
+            // Calculate number of carpet strips needed
+            const numberOfStrips = Math.ceil(roomWidth / carpetWidthValue);
+
+            // Calculate total carpet length in feet
+            const totalLengthFeet = numberOfStrips * roomLength;
+
+            // Convert to meters (1 foot = 0.3048 meters)
+            const totalLengthMeters = totalLengthFeet * 0.3048;
+
+            // Display result
+            carpetResultValue.textContent = totalLengthMeters.toFixed(2);
+            carpetCalcResult.style.display = 'block';
+        }
+
+        // Clear inputs when modal is closed
+        function clearCarpetCalculator() {
+            if (carpetRoomLength) carpetRoomLength.value = '';
+            if (carpetRoomWidth) carpetRoomWidth.value = '';
+            if (carpetWidth) carpetWidth.value = '';
+            if (carpetCalcError) carpetCalcError.classList.remove('show');
+            if (carpetCalcResult) carpetCalcResult.style.display = 'none';
+        }
+
+        // ========================================
+        // CURRENCY CONVERTER
+        // ========================================
         const nprInput = document.getElementById('nprInput');
         const inrInput = document.getElementById('inrInput');
         const swapBtn = document.getElementById('swapBtn');
@@ -1555,7 +1702,9 @@ document.addEventListener('DOMContentLoaded', function() {
             inrInput.value = temp;
         });
 
-        // Theme Toggle
+        // ========================================
+        // THEME TOGGLE
+        // ========================================
         const themeToggle = document.getElementById('themeToggle');
         let isDark = false;
         
@@ -1564,7 +1713,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
         });
 
-        // Keyboard Support
+        // ========================================
+        // KEYBOARD SUPPORT
+        // ========================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeProductModal();
