@@ -40,6 +40,16 @@
     "description": "Beautiful oriental patterns on a hand-tufted wool rug."
   },
   {
+    "id": 17,
+    "name": "Luxe Living Silver Carpet - Wood Plank Design",
+    "category": "carpet",
+    "price": 300,
+    "originalPrice": 400,
+    "discount": 25,
+    "image": "images/carpets/silver_carpet.jpg",
+    "description": "A stunning Luxe Living silver carpet featuring a Wood Plank Design (Width: 6.5 FT). Priced per meter."
+  },
+  {
     "id": 5,
     "name": "Premium Velvet Blackout Curtain",
     "category": "curtain",
