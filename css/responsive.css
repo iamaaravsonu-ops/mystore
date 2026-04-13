@@ -1,0 +1,97 @@
+/* Global Responsive Rules */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 350px;
+  }
+
+  .slide-content h2 {
+    font-size: 2rem;
+  }
+}
+
+/* User's Mobile Fixes (<480px) */
+@media (max-width: 480px) {
+
+  /* Header */
+  header { padding: 10px 16px; }
+  .logo { font-size: 18px; }
+  .icon-btn { width: 34px; height: 34px; }
+
+  /* Category tabs - NEVER stack, always horizontal scroll */
+  .category-tabs {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    gap: 8px;
+    padding: 10px 16px;
+    /* Make sure scroll works cleanly */
+    justify-content: flex-start;
+  }
+  .category-tabs::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  .category-tab { 
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 12px;
+    /* Pill shape */
+    border-radius: 30px;
+  }
+
+  /* Product grid - 2 columns */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Product card text - no overflow */
+  .product-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  .current-price { font-size: 13px; }
+  .price-old { font-size: 11px; }
+  .product-pricing { flex-wrap: wrap; }
+
+  /* WhatsApp button - always in bounds */
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 52px;
+    height: 52px;
+  }
+  .floating-whatsapp svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Modal fullscreen on mobile */
+  .product-modal {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .modal-content { grid-template-columns: 1fr; }
+  
+  .modal-img-wrap { padding: 20px; }
+  .modal-details { padding: 20px; }
+
+  /* Hero carousel */
+  .hero { height: 300px; }
+  .slide-bg { height: 100%; }
+}

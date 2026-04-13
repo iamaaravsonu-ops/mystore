@@ -3,958 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarav Enterprises - Premium Home Decor Solutions</title>
-    <meta name="description" content="Your trusted partner for premium home decor solutions in Birpur, Bihar. Discover our exclusive collection of carpets, curtains, and door mats.">
-    <meta name="theme-color" content="#d32f2f">
+    <title>Aarav Enterprises - Premium Home Decor</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            /* Core Colors */
-            --primary-red: #d32f2f;
-            --primary-red-hover: #b71c1c;
-            --whatsapp-green: #25D366;
-            --whatsapp-green-hover: #128C7E;
-            
-            /* Light Theme */
-            --bg-body: #f8f9fa;
-            --bg-surface: #ffffff;
-            --bg-surface-hover: #f1f3f5;
-            --text-main: #212529;
-            --text-muted: #6c757d;
-            --border-color: #e9ecef;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --shadow-lg: 0 12px 24px rgba(0,0,0,0.15);
-            
-            /* UI Elements */
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Typography */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', serif;
-        }
-
-        [data-theme="dark"] {
-            --bg-body: #121212;
-            --bg-surface: #1e1e1e;
-            --bg-surface-hover: #2d2d2d;
-            --text-main: #f8f9fa;
-            --text-muted: #adb5bd;
-            --border-color: #343a40;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.6);
-            --shadow-lg: 0 12px 24px rgba(0,0,0,0.7);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: linear-gradient(90deg, #111, #333);
-            color: white;
-            text-align: center;
-            padding: 8px 20px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        /* Header */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] header {
-            background-color: rgba(30, 30, 30, 0.95);
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-red);
-            text-decoration: none;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            color: var(--text-main);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .icon-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            cursor: pointer;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            color: var(--text-main);
-            position: relative;
-        }
-
-        .icon-btn:hover {
-            background-color: var(--bg-surface-hover);
-            transform: translateY(-2px);
-        }
-
-        .icon-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* Hero Carousel */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            background-color: var(--bg-surface);
-        }
-
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: transform;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-        }
-
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease 0.3s;
-        }
-
-        .slide.active .slide-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide h2 {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            margin-bottom: 15px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .slide p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary-red);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-red-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .nav-btn {
-            pointer-events: auto;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.5);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text-main);
-            transform: scale(1.1);
-        }
-
-        .indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.2);
-            box-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-
-        /* Product Section */
-        .products-wrapper {
-            max-width: 1400px;
-            margin: 60px auto;
-            padding: 0 5%;
-        }
-
-        .tabs-header {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover {
-            border-color: var(--primary-red);
-            color: var(--primary-red);
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary-red);
-            color: white;
-            border-color: var(--primary-red);
-            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--bg-surface);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--primary-red);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 10;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .img-container {
-            position: relative;
-            padding-top: 133%; /* 3:4 aspect ratio */
-            overflow: hidden;
-            background: var(--bg-body);
-        }
-
-        .img-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .img-container img {
-            transform: scale(1.05);
-        }
-
-        .quick-add {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: var(--text-main);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .product-card:hover .quick-add {
-            bottom: 15px;
-            opacity: 1;
-        }
-
-        .quick-add:hover {
-            background: var(--primary-red);
-            color: white;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-title {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-main);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .price-current {
-            color: var(--primary-red);
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .price-old {
-            color: var(--text-muted);
-            text-decoration: line-through;
-            font-size: 14px;
-        }
-
-        /* Modals */
-        .modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--bg-surface);
-            border-radius: var(--radius-lg);
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .modal.active .modal-content {
-            transform: scale(1);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--bg-body);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            color: var(--text-main);
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            background: var(--primary-red);
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        /* Product Modal specific */
-        .prod-modal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 900px;
-        }
-
-        .prod-img-wrap {
-            padding: 30px;
-            background: var(--bg-body);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .prod-img-wrap img {
-            max-width: 100%;
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .prod-details {
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .prod-details h2 {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .prod-details .price-block {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .prod-desc {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 30px;
-            flex-grow: 1;
-        }
-
-        .wa-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--whatsapp-green);
-            color: white;
-            text-decoration: none;
-            padding: 15px 24px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .wa-btn:hover {
-            background: var(--whatsapp-green-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-        }
-
-        /* Calculator Modal specific */
-        .calc-modal-content {
-            max-width: 500px;
-        }
-
-        .calc-header {
-            padding: 25px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .calc-header h2 {
-            font-family: var(--font-serif);
-            color: var(--primary-red);
-            margin-bottom: 15px;
-        }
-
-        .calc-tabs {
-            display: flex;
-            background: var(--bg-body);
-            border-radius: var(--radius-md);
-            padding: 4px;
-        }
-
-        .calc-tab {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            font-weight: 600;
-            color: var(--text-muted);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .calc-tab.active {
-            background: var(--bg-surface);
-            color: var(--primary-red);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .calc-body {
-            padding: 30px;
-        }
-
-        .calc-view {
-            display: none;
-            animation: fadeIn 0.4s;
-        }
-
-        .calc-view.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 14px;
-            color: var(--text-main);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-body);
-            color: var(--text-main);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-sans);
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
-        }
-
-        .error-msg {
-            color: #d32f2f;
-            background: #ffebee;
-            padding: 10px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            margin-bottom: 20px;
-            display: none;
-            border-left: 3px solid #d32f2f;
-        }
-
-        .result-box {
-            background: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            padding: 20px;
-            border-radius: var(--radius-sm);
-            text-align: center;
-            margin-top: 20px;
-            display: none;
-        }
-
-        [data-theme="dark"] .result-box {
-            background: #1b5e20;
-            border-color: #2e7d32;
-        }
-
-        .result-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: #2e7d32;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-
-        [data-theme="dark"] .result-value {
-            color: #a5d6a7;
-        }
-
-        .result-label {
-            font-size: 14px;
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        .btn-block {
-            width: 100%;
-            padding: 14px;
-            border-radius: var(--radius-sm);
-            font-size: 16px;
-        }
-
-        .converter-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .swap-wrapper {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
-
-        .btn-swap {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--primary-red);
-            transition: var(--transition);
-        }
-
-        .btn-swap:hover {
-            background: var(--primary-red);
-            color: white;
-        }
-
-        .rate-info {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-muted);
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Floating WA */
-        .float-wa {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--whatsapp-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .float-wa:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-surface);
-            border-top: 1px solid var(--border-color);
-            padding: 60px 5% 30px;
-            margin-top: 60px;
-        }
-
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h3 {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .footer-col p {
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .footer-col a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-col a:hover {
-            color: var(--primary-red);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
-            .prod-modal-grid {
-                grid-template-columns: 1fr;
-            }
-            .prod-img-wrap {
-                padding: 20px;
-            }
-            .prod-details {
-                padding: 25px 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 300px;
-            }
-            .slide h2 {
-                font-size: 2rem;
-            }
-            .slide p {
-                font-size: 1rem;
-            }
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            .header-actions .search-btn {
-                display: none; /* Hide search on small mobile if tight */
-            }
-            .calc-modal-content {
-                width: 95%;
-            }
-            .float-wa {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-            }
-            .nav-btn {
-                width: 36px;
-                height: 36px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/categories.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
+<body data-theme="light">
 
     <div class="top-bar">
-        Welcome to Aarav Enterprises | Free shipping on orders over ₹5,000 | Contact: +91 9060681818
+        Welcome to Aarav Enterprises | Your Premium Home Decor Destination
     </div>
 
     <header>
-        <a href="#" class="logo">
-            AARAV <span>ENTERPRISES</span>
-        </a>
+        <a href="#" class="logo">AARAV ENTERPRISES</a>
         <div class="header-actions">
-            <!-- Search -->
             <button class="icon-btn search-btn" aria-label="Search">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-            <!-- Calculator -->
             <button class="icon-btn" id="openCalc" aria-label="Calculator">
                 <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16.01" y2="14"></line><line x1="12" y1="14" x2="12.01" y2="14"></line><line x1="8" y1="14" x2="8.01" y2="14"></line><line x1="16" y1="18" x2="16.01" y2="18"></line><line x1="12" y1="18" x2="12.01" y2="18"></line><line x1="8" y1="18" x2="8.01" y2="18"></line><line x1="8" y1="10" x2="16" y2="10"></line></svg>
             </button>
-            <!-- Dark Mode Toggle -->
-            <button class="icon-btn" id="themeToggle" aria-label="Toggle Dark Mode">
-                <svg class="sun-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             </button>
         </div>
     </header>
 
     <section class="hero" id="hero">
         <div class="carousel-track" id="track">
-            <!-- Slide 1 -->
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+            <div class="slide active">
+                <img src="images/hero/hero1.jpg" alt="Welcome" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80'">
                 <div class="slide-content">
                     <h2>Welcome to Aarav Enterprises</h2>
-                    <p>Your Premium Home Decor Destination in Birpur, Bihar.</p>
-                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Collection</button>
+                    <p>Your Premium Home Decor Destination.</p>
                 </div>
             </div>
-            <!-- Slide 2 -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+            <div class="slide">
+                <img src="images/hero/hero2.jpg" alt="Products" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=80'">
                 <div class="slide-content">
                     <h2>Exceptional Quality</h2>
-                    <p>Discover our curated selection of carpets, curtains, and elegant door mats.</p>
-                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+                    <p>Discover our curated selection of fine carpets, elegant curtains, and door mats.</p>
                 </div>
             </div>
-            <!-- Slide 3 -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+            <div class="slide">
+                <img src="images/hero/hero3.jpg" alt="Contact" class="slide-bg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80'">
                 <div class="slide-content">
                     <h2>Contact Us Today</h2>
-                    <p>Get Expert Advice & Best Prices direct from our showroom.</p>
-                    <a href="https://wa.me/919060681818" class="btn-primary" target="_blank">Chat on WhatsApp</a>
+                    <p>Get Expert Advice & Best Prices.</p>
                 </div>
             </div>
         </div>
-        
         <div class="carousel-nav">
-            <button class="nav-btn" id="prevSlide"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-            <button class="nav-btn" id="nextSlide"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            <button class="nav-btn prev" id="prevSlide"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <button class="nav-btn next" id="nextSlide"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
         </div>
-        
         <div class="indicators" id="indicators">
             <div class="dot active" data-index="0"></div>
             <div class="dot" data-index="1"></div>
@@ -962,46 +76,40 @@
         </div>
     </section>
 
-    <section class="products-wrapper" id="products">
-        <div class="tabs-header">
-            <button class="tab-btn active" data-target="carpet">Carpet Collection</button>
-            <button class="tab-btn" data-target="curtain">Curtain Collection</button>
-            <button class="tab-btn" data-target="doormat">Door Mat Collection</button>
-            <button class="tab-btn" data-target="more">More Items</button>
+    <section class="products-container" id="products">
+        <div class="category-tabs" id="categoryTabs">
+            <button class="category-tab active" data-category="carpet">Carpet Collection</button>
+            <button class="category-tab" data-category="curtain">Curtain Collection</button>
+            <button class="category-tab" data-category="doormat">Door Mat Collection</button>
+            <button class="category-tab" data-category="more">More Items</button>
         </div>
 
-        <div class="tab-content active" id="carpet">
-            <div class="product-grid" id="grid-carpet"></div>
-        </div>
-        <div class="tab-content" id="curtain">
-            <div class="product-grid" id="grid-curtain"></div>
-        </div>
-        <div class="tab-content" id="doormat">
-            <div class="product-grid" id="grid-doormat"></div>
-        </div>
-        <div class="tab-content" id="more">
-            <div class="product-grid" id="grid-more"></div>
+        <div class="product-grid" id="productGrid">
+            <!-- Dynamic product cards render here via JS -->
         </div>
     </section>
 
     <!-- Product Modal -->
     <div class="modal" id="prodModal">
-        <div class="modal-content prod-modal-grid">
+        <div class="modal-content product-modal">
             <button class="close-modal">&times;</button>
-            <div class="prod-img-wrap">
-                <img id="mImg" src="" alt="">
-            </div>
-            <div class="prod-details">
-                <h2 id="mTitle">Product Title</h2>
-                <div class="price-block product-price">
-                    <span class="price-current" id="mPrice">₹0</span>
-                    <span class="price-old" id="mOldPrice">₹0</span>
+            <div class="modal-grid">
+                <div class="modal-img-wrap">
+                    <img id="mImg" src="" alt="">
                 </div>
-                <p class="prod-desc">Enhance your home with this premium quality piece from Aarav Enterprises. Crafted meticulously to fuse stunning aesthetic appeal with superior durability. Experience the perfect blend of modern elegance and timeless charm.</p>
-                <a href="#" class="wa-btn" id="mWaBtn" target="_blank">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    Inquire on WhatsApp
-                </a>
+                <div class="modal-details">
+                    <h2 id="mTitle">Product Title</h2>
+                    <div class="modal-price">
+                        <span class="current-price" id="mPrice">₹0</span>
+                        <span class="original-price" id="mOldPrice">₹0</span>
+                    </div>
+                    <p class="modal-desc" id="mDesc"></p>
+                    <a href="#" class="btn-whatsapp" id="mWaBtn" target="_blank">
+                        <!-- WhatsApp SVG -->
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp Inquiry
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1021,22 +129,22 @@
             <div class="calc-body">
                 <!-- Carpet Calc -->
                 <div class="calc-view active" id="c-carpet">
-                    <div class="error-msg" id="calcError">Please enter valid numeric values for all fields.</div>
+                    <div class="error-msg" id="calcError">Please enter valid numeric fields.</div>
                     
                     <div class="form-group">
                         <label class="form-label">Room Length (feet)</label>
-                        <input type="number" id="rLength" class="form-input" placeholder="Enter length in feet" min="0.1" step="0.1">
+                        <input type="number" id="rLength" class="form-input" min="0">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Room Width (feet)</label>
-                        <input type="number" id="rWidth" class="form-input" placeholder="Enter width in feet" min="0.1" step="0.1">
+                        <input type="number" id="rWidth" class="form-input" min="0">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Carpet Width (feet)</label>
-                        <input type="number" id="cWidth" class="form-input" placeholder="Enter carpet width in feet" min="0.1" step="0.1">
+                        <input type="number" id="cWidth" class="form-input" min="0">
                     </div>
                     
-                    <button class="btn-primary btn-block" id="btnCalc">Calculate Length</button>
+                    <button class="btn-primary" id="btnCalc">Calculate Length</button>
                     
                     <div class="result-box" id="calcResult">
                         <div class="result-value" id="resMeters">0.00</div>
@@ -1048,48 +156,43 @@
                 <div class="calc-view" id="c-currency">
                     <div class="form-group">
                         <label class="form-label">Nepali Rupees (NPR)</label>
-                        <input type="number" id="nprVal" class="form-input" placeholder="0.00">
+                        <input type="number" id="nprVal" class="form-input">
                     </div>
-                    
                     <div class="swap-wrapper">
                         <button class="btn-swap" id="btnSwap" aria-label="Swap Currency">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="16 3 21 8 16 13"></polyline><line x1="21" y1="8" x2="9" y2="8"></line><polyline points="8 21 3 16 8 11"></polyline><line x1="3" y1="16" x2="15" y2="16"></line></svg>
+                            <svg viewBox="0 0 24 24"><polyline points="16 3 21 8 16 13"></polyline><line x1="21" y1="8" x2="9" y2="8"></line><polyline points="8 21 3 16 8 11"></polyline><line x1="3" y1="16" x2="15" y2="16"></line></svg>
                         </button>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label">Indian Rupees (INR)</label>
-                        <input type="number" id="inrVal" class="form-input" placeholder="0.00">
+                        <input type="number" id="inrVal" class="form-input">
                     </div>
-                    
-                    <div class="rate-info">
-                        Fixed Rate: 1 NPR = 0.625 INR &nbsp;|&nbsp; 1 INR = 1.60 NPR
-                    </div>
+                    <div class="rate-info">1 NPR = 0.625 INR | 1 INR = 1.60 NPR</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919060681818" class="float-wa" target="_blank" aria-label="WhatsApp Us">
-        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    <a href="https://wa.me/919060681818" class="floating-whatsapp" target="_blank" aria-label="WhatsApp Us">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>Aarav Enterprises</h3>
-                <p>Your trusted partner for premium home decor solutions. Providing quality, elegance, and trust since the beginning.</p>
+                <p>Your trusted partner for premium home decor solutions.</p>
             </div>
             <div class="footer-col">
                 <h3>Address</h3>
-                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Main Road, Birpur – 854340 <br> Bihar, India</p>
+                <p>Main Road, Birpur – 854340, Bihar, India</p>
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:+919060681818">+91 9060681818</a></p>
-                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> <a href="https://wa.me/919060681818" target="_blank">WhatsApp Us</a></p>
-                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <a href="mailto:info@aaraventerprises.com">info@aaraventerprises.com</a></p>
+                <p><a href="tel:+919060681818">+91 9060681818</a></p>
+                <p><a href="https://wa.me/919060681818" target="_blank">WhatsApp Us</a></p>
+                <p><a href="mailto:info@aaraventerprises.com">info@aaraventerprises.com</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1097,232 +200,11 @@
         </div>
     </footer>
 
-    <script>
-        // Data
-        const products = {
-            carpet: [
-                { id: 'c1', name: 'Persian Heritage Red Carpet', price: 4500, oldPrice: 6000, img: 'https://images.unsplash.com/photo-1600166898405-da9535204843?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'c2', name: 'Modern Geometric Area Rug', price: 3200, oldPrice: 4000, img: 'https://images.unsplash.com/photo-1574825946227-2c5253818e1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'c3', name: 'Luxury Shaggy White Carpet', price: 2800, oldPrice: 3500, img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'c4', name: 'Classic Oriental Wool Rug', price: 5500, oldPrice: 7000, img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
-            ],
-            curtain: [
-                { id: 'cu1', name: 'Premium Velvet Blackout Curtain', price: 1800, oldPrice: 2400, img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'cu2', name: 'Sheer Elegant Window Drapes', price: 1200, oldPrice: 1600, img: 'https://images.unsplash.com/photo-1588636184918-cc85d85d7768?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'cu3', name: 'Floral Printed Cotton Curtain', price: 1500, oldPrice: 2000, img: 'https://images.unsplash.com/photo-1579705705352-70b0cc44df3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'cu4', name: 'Thermal Insulated Solid Drapes', price: 2100, oldPrice: 2800, img: 'https://images.unsplash.com/photo-1627308595186-b4dabc1f0b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
-            ],
-            doormat: [
-                { id: 'd1', name: 'Welcome Coir Mat', price: 500, oldPrice: 750, img: 'https://images.unsplash.com/photo-1594833215579-0524419914fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'd2', name: 'Anti-Slip Rubber Doormat', price: 450, oldPrice: 600, img: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'd3', name: 'Heavy Duty Outdoor Mat', price: 800, oldPrice: 1200, img: 'https://images.unsplash.com/photo-1629737409192-383db1f54460?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'd4', name: 'Decorative Printed Doormat', price: 650, oldPrice: 900, img: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
-            ],
-            more: [
-                { id: 'm1', name: 'Ceramic Table Vase Set', price: 1400, oldPrice: 2000, img: 'https://images.unsplash.com/photo-1581783342308-f792dbca2f18?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'm2', name: 'Decorative Wall Mirror', price: 2500, oldPrice: 3200, img: 'https://images.unsplash.com/photo-1618220179428-22790b46a014?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'm3', name: 'Plush Throw Pillows (Set)', price: 900, oldPrice: 1200, img: 'https://images.unsplash.com/photo-1584100936551-93339ed3462f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                { id: 'm4', name: 'Aromatic Candle Collection', price: 600, oldPrice: 850, img: 'https://images.unsplash.com/photo-1602874801007-bd458cb6c507?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
-            ]
-        };
-
-        const waNumber = "919060681818";
-
-        // Render Grids
-        function renderGrid(catKey) {
-            const container = document.getElementById('grid-' + catKey);
-            let html = '';
-            products[catKey].forEach(p => {
-                const discount = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
-                html += `
-                <div class="product-card" onclick="openProdModal('${catKey}', '${p.id}')">
-                    <div class="badge">${discount}% OFF</div>
-                    <div class="img-container">
-                        <img src="${p.img}" alt="${p.name}" loading="lazy">
-                        <button class="quick-add"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-title">${p.name}</div>
-                        <div class="product-price">
-                            <span class="price-current">₹${p.price.toLocaleString('en-IN')}</span>
-                            <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
-                        </div>
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-        }
-
-        ['carpet', 'curtain', 'doormat', 'more'].forEach(renderGrid);
-
-        // Product Modal Logic
-        const prodModal = document.getElementById('prodModal');
-        function openProdModal(catKey, pId) {
-            const p = products[catKey].find(x => x.id === pId);
-            if(!p) return;
-            
-            document.getElementById('mImg').src = p.img;
-            document.getElementById('mTitle').textContent = p.name;
-            document.getElementById('mPrice').textContent = '₹' + p.price.toLocaleString('en-IN');
-            document.getElementById('mOldPrice').textContent = '₹' + p.oldPrice.toLocaleString('en-IN');
-            
-            const msg = encodeURIComponent(`Hi! I'm interested in the "${p.name}" priced at ₹${p.price}. Can I get more details?`);
-            document.getElementById('mWaBtn').href = `https://wa.me/${waNumber}?text=${msg}`;
-            
-            prodModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Dark Mode Logic
-        const themeBtn = document.getElementById('themeToggle');
-        themeBtn.addEventListener('click', () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeBtn.innerHTML = isDark 
-                ? '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" fill="none" stroke-width="2"></path></svg>'
-                : '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" stroke="currentColor" fill="none" stroke-width="2"></circle><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"></line><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"></line><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"></line><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"></line></svg>';
-        });
-
-        // Tabs Logic (Products)
-        document.querySelectorAll('.tab-btn:not(.calc-tab)').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.tab-btn:not(.calc-tab)').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                e.target.classList.add('active');
-                document.getElementById(e.target.dataset.target).classList.add('active');
-            });
-        });
-
-        // Carousel Logic
-        let curSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const track = document.getElementById('track');
-        const slideCount = slides.length;
-
-        function updateSlider() {
-            track.style.transform = `translateX(-${curSlide * 100}%)`;
-            slides.forEach((s, i) => {
-                s.classList.toggle('active', i === curSlide);
-            });
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i === curSlide);
-            });
-        }
-
-        document.getElementById('prevSlide').addEventListener('click', () => { curSlide = (curSlide - 1 + slideCount) % slideCount; updateSlider(); resetInterval(); });
-        document.getElementById('nextSlide').addEventListener('click', () => { curSlide = (curSlide + 1) % slideCount; updateSlider(); resetInterval(); });
-        dots.forEach(d => d.addEventListener('click', (e) => { curSlide = parseInt(e.target.dataset.index); updateSlider(); resetInterval(); }));
-
-        // Touch swipe support
-        let startX = 0;
-        document.getElementById('hero').addEventListener('touchstart', e => startX = e.changedTouches[0].screenX, {passive: true});
-        document.getElementById('hero').addEventListener('touchend', e => {
-            let endX = e.changedTouches[0].screenX;
-            if (startX - endX > 50) { curSlide = (curSlide + 1) % slideCount; updateSlider(); resetInterval(); }
-            else if (endX - startX > 50) { curSlide = (curSlide - 1 + slideCount) % slideCount; updateSlider(); resetInterval(); }
-        }, {passive: true});
-
-        let autoSlide = setInterval(() => { curSlide = (curSlide + 1) % slideCount; updateSlider(); }, 5000);
-        function resetInterval() { clearInterval(autoSlide); autoSlide = setInterval(() => { curSlide = (curSlide + 1) % slideCount; updateSlider(); }, 5000); }
-
-        // Calc Modal Logic
-        const calcModal = document.getElementById('calcModal');
-        document.getElementById('openCalc').addEventListener('click', () => {
-            calcModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        document.querySelectorAll('.close-modal').forEach(btn => {
-            btn.addEventListener('click', () => {
-                prodModal.classList.remove('active');
-                calcModal.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        window.onclick = function(e) {
-            if (e.target == prodModal || e.target == calcModal) {
-                prodModal.classList.remove('active');
-                calcModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        };
-
-        // Tabs Logic (Calculator)
-        document.querySelectorAll('.calc-tab').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.calc-tab').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.calc-view').forEach(c => c.classList.remove('active'));
-                e.target.classList.add('active');
-                document.getElementById(e.target.dataset.target).classList.add('active');
-            });
-        });
-
-        // Carpet Calculator Core Logic
-        // Step 1: Convert all values from feet to meters (1 ft = 0.3048 m)
-        // Step 2: Calculate number of strips = ceil(Room Width (m) / Carpet Width (m))
-        // Step 3: Total carpet meters = Number of strips * Room Length (m)
-        document.getElementById('btnCalc').addEventListener('click', () => {
-            const rL_ft = parseFloat(document.getElementById('rLength').value);
-            const rW_ft = parseFloat(document.getElementById('rWidth').value);
-            const cW_ft = parseFloat(document.getElementById('cWidth').value);
-            const err = document.getElementById('calcError');
-            const resBox = document.getElementById('calcResult');
-
-            if (isNaN(rL_ft) || isNaN(rW_ft) || isNaN(cW_ft) || rL_ft <= 0 || rW_ft <= 0 || cW_ft <= 0) {
-                err.style.display = 'block';
-                resBox.style.display = 'none';
-                return;
-            }
-            err.style.display = 'none';
-
-            // Step 1
-            const rL_m = rL_ft * 0.3048;
-            const rW_m = rW_ft * 0.3048;
-            const cW_m = cW_ft * 0.3048;
-
-            // Step 2
-            const strips = Math.ceil(rW_m / cW_m);
-
-            // Step 3
-            const totalMeters = strips * rL_m;
-
-            document.getElementById('resMeters').textContent = totalMeters.toFixed(2);
-            resBox.style.display = 'block';
-        });
-
-        // Currency Converter Logic
-        const nprInp = document.getElementById('nprVal');
-        const inrInp = document.getElementById('inrVal');
-        const rateNprInr = 0.625; // 1 NPR = 0.625 INR
-        const rateInrNpr = 1.60;  // 1 INR = 1.60 NPR
-
-        nprInp.addEventListener('input', () => {
-            let n = parseFloat(nprInp.value);
-            if(!isNaN(n)) inrInp.value = (n * rateNprInr).toFixed(2);
-            else inrInp.value = '';
-        });
-
-        inrInp.addEventListener('input', () => {
-            let i = parseFloat(inrInp.value);
-            if(!isNaN(i)) nprInp.value = (i * rateInrNpr).toFixed(2);
-            else nprInp.value = '';
-        });
-
-        document.getElementById('btnSwap').addEventListener('click', () => {
-            let temp = nprInp.value;
-            nprInp.value = inrInp.value;
-            inrInp.value = temp;
-            
-            // Trigger calculation manually based on which one has value
-            if (nprInp.value !== '') {
-                inrInp.value = (parseFloat(nprInp.value) * rateNprInr).toFixed(2);
-            } else if (inrInp.value !== '') {
-                nprInp.value = (parseFloat(inrInp.value) * rateInrNpr).toFixed(2);
-            }
-        });
-
-    </script>
+    <!-- App Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/calculator.js"></script>
 </body>
 </html>
