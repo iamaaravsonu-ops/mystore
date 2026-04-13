@@ -3,195 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarav Enterprises - Home Decor Showroom</title>
+    <title>Aarav Enterprises - Premium Home Decor Solutions</title>
+    <meta name="description" content="Your trusted partner for premium home decor solutions in Birpur, Bihar. Discover our exclusive collection of carpets, curtains, and door mats.">
+    <meta name="theme-color" content="#d32f2f">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            /* Core Colors */
+            --primary-red: #d32f2f;
+            --primary-red-hover: #b71c1c;
+            --whatsapp-green: #25D366;
+            --whatsapp-green-hover: #128C7E;
+            
+            /* Light Theme */
+            --bg-body: #f8f9fa;
+            --bg-surface: #ffffff;
+            --bg-surface-hover: #f1f3f5;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.15);
+            
+            /* UI Elements */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #121212;
+            --bg-surface: #1e1e1e;
+            --bg-surface-hover: #2d2d2d;
+            --text-main: #f8f9fa;
+            --text-muted: #adb5bd;
+            --border-color: #343a40;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.6);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.7);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #f5f5f5;
-            --bg-secondary: #ffffff;
-            --text-primary: #2c2c2c;
-            --text-secondary: #666666;
-            --accent-color: #d32f2f;
-            --border-color: #e0e0e0;
-            --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --whatsapp-green: #25D366;
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2c2c2c;
-            --text-primary: #f5f5f5;
-            --text-secondary: #b0b0b0;
-            --accent-color: #ff5252;
-            --border-color: #404040;
-            --card-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            transition: var(--transition);
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Top Bar */
         .top-bar {
-            background-color: var(--bg-secondary);
-            padding: 12px 20px;
+            background: linear-gradient(90deg, #111, #333);
+            color: white;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .top-bar h1 {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text-primary);
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* Header */
         header {
             position: sticky;
             top: 0;
-            background-color: var(--bg-secondary);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            padding: 15px 20px;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-primary);
+        [data-theme="dark"] header {
+            background-color: rgba(30, 30, 30, 0.95);
         }
 
-        .header-icons {
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-decoration: none;
+            letter-spacing: 1px;
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
             align-items: center;
         }
 
         .icon-btn {
-            background: none;
-            border: none;
+            background: transparent;
+            border: 1px solid transparent;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            color: var(--text-primary);
+            color: var(--text-main);
+            position: relative;
         }
 
         .icon-btn:hover {
-            background-color: var(--bg-primary);
-            transform: scale(1.1);
+            background-color: var(--bg-surface-hover);
+            transform: translateY(-2px);
         }
 
         .icon-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
-        /* Hero Carousel Section */
-        .hero-carousel {
+        /* Hero Carousel */
+        .hero {
             position: relative;
             width: 100%;
-            max-height: 500px;
-            overflow: hidden;
-            background-color: var(--bg-primary);
-            touch-action: pan-y pinch-zoom;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: 100%;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
             height: 500px;
+            overflow: hidden;
+            background-color: var(--bg-surface);
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-            user-select: none;
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
         }
 
-        /* Carousel Navigation Buttons */
-        .carousel-btn {
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+        }
+
+        .carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            width: 50px;
-            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            pointer-events: auto;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .carousel-btn:hover {
-            background-color: rgba(255, 255, 255, 1);
-            transform: translateY(-50%) scale(1.1);
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-main);
+            transform: scale(1.1);
         }
 
-        .carousel-btn.prev {
-            left: 20px;
-        }
-
-        .carousel-btn.next {
-            right: 20px;
-        }
-
-        .carousel-btn svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--text-primary);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        /* Carousel Dots */
-        .carousel-dots {
+        .indicators {
             position: absolute;
             bottom: 20px;
             left: 50%;
@@ -201,1527 +285,1044 @@
             z-index: 10;
         }
 
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
+        .dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.4);
             cursor: pointer;
             transition: var(--transition);
-            border: 2px solid white;
+            border: 2px solid transparent;
         }
 
-        .carousel-dot.active {
-            background-color: white;
+        .dot.active {
+            background: white;
             transform: scale(1.2);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
 
-        @media (max-width: 768px) {
-            .hero-carousel {
-                max-height: 300px;
-            }
-
-            .carousel-slide {
-                height: 300px;
-            }
-
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .carousel-btn.prev {
-                left: 10px;
-            }
-
-            .carousel-btn.next {
-                right: 10px;
-            }
-        }
-
-        /* Category Tabs */
-        .category-tabs {
-            background-color: var(--bg-secondary);
-            padding: 15px 20px;
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .category-tab {
-            padding: 10px 20px;
-            background: none;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--text-secondary);
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            border-radius: 4px;
-        }
-
-        .category-tab:hover {
-            background-color: var(--bg-primary);
-        }
-
-        .category-tab.active {
-            background-color: var(--text-primary);
-            color: var(--bg-secondary);
-            border-color: var(--text-primary);
-        }
-
-        /* Products Container */
-        .products-container {
-            padding: 20px;
+        /* Product Section */
+        .products-wrapper {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 60px auto;
+            padding: 0 5%;
         }
 
-        .category-section {
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+        }
+
+        .tab-content {
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .category-section.active {
+        .tab-content.active {
             display: block;
-        }
-
-        .category-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            letter-spacing: 1px;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 30px;
         }
 
-        /* Responsive Grid */
-        @media (max-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .products-container {
-                padding: 15px;
-            }
-        }
-
-        /* Product Card */
         .product-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: var(--transition);
+            background: var(--bg-surface);
+            border-radius: var(--radius-md);
             overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            cursor: pointer;
             position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .discount-badge {
+        .badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: var(--accent-color);
+            top: 12px;
+            left: 12px;
+            background: var(--primary-red);
             color: white;
-            padding: 4px 8px;
-            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: 700;
-            z-index: 1;
-            letter-spacing: 0.5px;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .product-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            background-color: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .img-container {
             position: relative;
+            padding-top: 133%; /* 3:4 aspect ratio */
+            overflow: hidden;
+            background: var(--bg-body);
         }
 
-        .product-image img {
+        .img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .add-btn {
+        .product-card:hover .img-container img {
+            transform: scale(1.05);
+        }
+
+        .quick-add {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: white;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: var(--text-main);
             border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
+            gap: 6px;
         }
 
-        .product-card:hover .add-btn {
+        .product-card:hover .quick-add {
+            bottom: 15px;
             opacity: 1;
         }
 
-        .add-btn:hover {
-            transform: scale(1.1);
+        .quick-add:hover {
+            background: var(--primary-red);
+            color: white;
         }
 
         .product-info {
-            padding: 15px;
+            padding: 20px;
         }
 
-        .product-name {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .product-title {
+            font-size: 15px;
+            font-weight: 600;
             margin-bottom: 8px;
-            color: var(--text-secondary);
+            color: var(--text-main);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .product-price {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .current-price {
-            color: var(--accent-color);
+        .price-current {
+            color: var(--primary-red);
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
         }
 
-        .original-price {
-            color: var(--text-secondary);
+        .price-old {
+            color: var(--text-muted);
             text-decoration: line-through;
             font-size: 14px;
         }
 
-        /* Modal Overlay */
-        .modal-overlay {
+        /* Modals */
+        .modal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            display: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
+            z-index: 2000;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        .modal-overlay.active {
-            display: flex;
+        .modal.active {
             opacity: 1;
+            visibility: visible;
         }
 
-        /* Product Modal */
-        .product-modal {
-            background-color: var(--bg-secondary);
+        .modal-content {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
             width: 90%;
-            max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 8px;
             position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease-in-out;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-lg);
         }
 
-        .modal-overlay.active .product-modal {
+        .modal.active .modal-content {
             transform: scale(1);
         }
 
-        .modal-close {
+        .close-modal {
             position: absolute;
             top: 15px;
             right: 15px;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background-color: var(--bg-primary);
+            background: var(--bg-body);
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
+            color: var(--text-main);
             transition: var(--transition);
         }
 
-        .modal-close:hover {
+        .close-modal:hover {
+            background: var(--primary-red);
+            color: white;
             transform: rotate(90deg);
-            background-color: var(--accent-color);
         }
 
-        .modal-close svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-primary);
-        }
-
-        .modal-content {
+        /* Product Modal specific */
+        .prod-modal-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            max-width: 900px;
         }
 
-        .modal-image {
-            background-color: var(--bg-primary);
-            padding: 40px;
+        .prod-img-wrap {
+            padding: 30px;
+            background: var(--bg-body);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .modal-image img {
-            width: 100%;
-            max-width: 300px;
+        .prod-img-wrap img {
+            max-width: 100%;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
         }
 
-        .modal-details {
-            padding: 40px;
+        .prod-details {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .modal-details h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .modal-details p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        /* WhatsApp Button in Modal */
-        .whatsapp-action {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .query-text {
-            font-size: 16px;
-            font-weight: 600;
+        .prod-details h2 {
+            font-family: var(--font-serif);
+            font-size: 28px;
             margin-bottom: 15px;
-            color: var(--text-primary);
         }
 
-        .whatsapp-btn {
-            display: inline-flex;
+        .prod-details .price-block {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .prod-desc {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .wa-btn {
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            padding: 12px 24px;
-            background-color: var(--whatsapp-green);
+            background: var(--whatsapp-green);
             color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            text-decoration: none;
+            padding: 15px 24px;
+            border-radius: var(--radius-sm);
             font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .wa-btn:hover {
+            background: var(--whatsapp-green-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Calculator Modal specific */
+        .calc-modal-content {
+            max-width: 500px;
+        }
+
+        .calc-header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calc-header h2 {
+            font-family: var(--font-serif);
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .calc-tabs {
+            display: flex;
+            background: var(--bg-body);
+            border-radius: var(--radius-md);
+            padding: 4px;
+        }
+
+        .calc-tab {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
             cursor: pointer;
             transition: var(--transition);
-            text-decoration: none;
         }
 
-        .whatsapp-btn:hover {
-            background-color: #20BA5A;
-            transform: scale(1.05);
+        .calc-tab.active {
+            background: var(--bg-surface);
+            color: var(--primary-red);
+            box-shadow: var(--shadow-sm);
         }
 
-        .whatsapp-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .calc-body {
+            padding: 30px;
         }
 
-        /* Floating WhatsApp Button */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background-color: var(--whatsapp-green);
+        .calc-view {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        .calc-view.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-body);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+            border-left: 3px solid #d32f2f;
+        }
+
+        .result-box {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        [data-theme="dark"] .result-box {
+            background: #1b5e20;
+            border-color: #2e7d32;
+        }
+
+        .result-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        [data-theme="dark"] .result-value {
+            color: #a5d6a7;
+        }
+
+        .result-label {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+        }
+
+        .converter-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .swap-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .btn-swap {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            width: 40px; height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            z-index: 1500;
+            color: var(--primary-red);
             transition: var(--transition);
-            text-decoration: none;
         }
 
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        .btn-swap:hover {
+            background: var(--primary-red);
+            color: white;
         }
 
-        .floating-whatsapp svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
+        .rate-info {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
         }
 
-        @media (max-width: 768px) {
-            .floating-whatsapp {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
+        /* Floating WA */
+        .float-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
 
-            .floating-whatsapp svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .modal-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-image {
-                padding: 30px;
-            }
-            
-            .modal-details {
-                padding: 20px;
-            }
+        .float-wa:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
         /* Footer */
-        .footer {
-            background-color: var(--bg-secondary);
+        footer {
+            background: var(--bg-surface);
             border-top: 1px solid var(--border-color);
-            padding: 40px 20px;
+            padding: 60px 5% 30px;
             margin-top: 60px;
-            transition: var(--transition);
         }
 
-        .footer-content {
+        .footer-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .footer-section h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-            letter-spacing: 0.5px;
+        .footer-col h3 {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-main);
         }
 
-        .footer-section p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 8px;
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .footer-section a {
-            color: var(--text-secondary);
+        .footer-col a {
+            color: var(--text-muted);
             text-decoration: none;
             transition: var(--transition);
         }
 
-        .footer-section a:hover {
-            color: var(--whatsapp-green);
+        .footer-col a:hover {
+            color: var(--primary-red);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            margin-top: 20px;
             border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 14px;
         }
 
-        /* Calculator Modal */
-        .calculator-modal {
-            background-color: var(--bg-secondary);
-            width: 90%;
-            max-width: 500px;
-            border-radius: 16px;
-            overflow: hidden;
-            transform: scale(0.9);
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-overlay.active .calculator-modal {
-            transform: scale(1);
-        }
-
-        .calc-header {
-            padding: 24px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #b71c1c 100%);
-            color: white;
-            position: relative;
-        }
-
-        .calc-header h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
-
-        .calc-tabs {
-            display: flex;
-            gap: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 4px;
-            border-radius: 8px;
-        }
-
-        .calc-tab {
-            flex: 1;
-            padding: 10px 16px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-            border-radius: 6px;
-            letter-spacing: 0.3px;
-        }
-
-        .calc-tab:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .calc-tab.active {
-            background-color: white;
-            color: var(--accent-color);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .calc-body {
-            padding: 24px;
-        }
-
-        /* Carpet Calculator Styles */
-        .calculator-view {
-            display: none;
-        }
-
-        .calculator-view.active {
-            display: block;
-        }
-
-        .carpet-calculator-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .carpet-calc-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .carpet-calc-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .carpet-calc-label::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-        }
-
-        .carpet-calc-input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border-color);
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 10px;
-            transition: var(--transition);
-            font-family: inherit;
-        }
-
-        .carpet-calc-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background-color: var(--bg-secondary);
-            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
-        }
-
-        .carpet-calc-input::placeholder {
-            color: var(--text-secondary);
-            opacity: 0.6;
-        }
-
-        .carpet-calc-error {
-            display: none;
-            padding: 12px 16px;
-            background-color: #ffebee;
-            color: #c62828;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            border-left: 4px solid #c62828;
-        }
-
-        .carpet-calc-error.show {
-            display: block;
-            animation: shake 0.4s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
-
-        .carpet-calc-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #b71c1c 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
-        }
-
-        .carpet-calc-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(211, 47, 47, 0.4);
-        }
-
-        .carpet-calc-btn:active {
-            transform: translateY(0);
-        }
-
-        .carpet-calc-result {
-            display: none;
-            padding: 24px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid #66bb6a;
-            animation: fadeInScale 0.5s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .carpet-result-value {
-            font-size: 48px;
-            font-weight: 800;
-            color: #2e7d32;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
-        }
-
-        .carpet-result-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1b5e20;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Currency Converter */
-        .currency-converter {
-            display: none;
-        }
-
-        .currency-converter.active {
-            display: block;
-        }
-
-        .currency-group {
-            margin-bottom: 20px;
-        }
-
-        .currency-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .currency-input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border-color);
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 10px;
-            transition: var(--transition);
-            font-family: inherit;
-        }
-
-        .currency-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background-color: var(--bg-secondary);
-            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
-        }
-
-        .conversion-rate {
-            margin-top: 16px;
-            padding: 16px;
-            background-color: var(--bg-primary);
-            border-radius: 10px;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-        }
-
-        .swap-btn {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
-            background-color: var(--text-primary);
-            color: var(--bg-secondary);
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .swap-btn:hover {
-            background-color: var(--accent-color);
-            transform: scale(1.02);
-        }
-
-        /* Loading Animation */
+        /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .prod-modal-grid {
+                grid-template-columns: 1fr;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .prod-img-wrap {
+                padding: 20px;
+            }
+            .prod-details {
+                padding: 25px 20px;
             }
         }
 
-        .product-card {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        /* Mobile Responsive Improvements */
         @media (max-width: 768px) {
-            .calculator-modal {
-                max-width: 95%;
+            .hero {
+                height: 300px;
             }
-
-            .calc-header {
-                padding: 20px;
+            .slide h2 {
+                font-size: 2rem;
             }
-
-            .calc-header h3 {
-                font-size: 18px;
+            .slide p {
+                font-size: 1rem;
             }
-
-            .calc-body {
-                padding: 20px;
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
-
-            .carpet-result-value {
-                font-size: 36px;
+            .header-actions .search-btn {
+                display: none; /* Hide search on small mobile if tight */
+            }
+            .calc-modal-content {
+                width: 95%;
+            }
+            .float-wa {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .nav-btn {
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
+
     <div class="top-bar">
-        <h1>Aarav Enterprises</h1>
+        Welcome to Aarav Enterprises | Free shipping on orders over ₹5,000 | Contact: +91 9060681818
     </div>
 
-    <!-- Header -->
     <header>
-        <div class="logo">HOME DECOR</div>
-        <div class="header-icons">
-            <button class="icon-btn" id="calculatorBtn" aria-label="Calculator">
-                <svg viewBox="0 0 24 24">
-                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                    <line x1="8" y1="6" x2="16" y2="6"></line>
-                    <line x1="8" y1="10" x2="16" y2="10"></line>
-                    <line x1="8" y1="14" x2="16" y2="14"></line>
-                    <line x1="8" y1="18" x2="16" y2="18"></line>
-                </svg>
+        <a href="#" class="logo">
+            AARAV <span>ENTERPRISES</span>
+        </a>
+        <div class="header-actions">
+            <!-- Search -->
+            <button class="icon-btn search-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-            <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
+            <!-- Calculator -->
+            <button class="icon-btn" id="openCalc" aria-label="Calculator">
+                <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16.01" y2="14"></line><line x1="12" y1="14" x2="12.01" y2="14"></line><line x1="8" y1="14" x2="8.01" y2="14"></line><line x1="16" y1="18" x2="16.01" y2="18"></line><line x1="12" y1="18" x2="12.01" y2="18"></line><line x1="8" y1="18" x2="8.01" y2="18"></line><line x1="8" y1="10" x2="16" y2="10"></line></svg>
+            </button>
+            <!-- Dark Mode Toggle -->
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
         </div>
     </header>
 
-    <!-- Hero Carousel Section with 3 Slides -->
-    <div class="hero-carousel" id="heroCarousel">
-        <div class="carousel-container">
-            <div class="carousel-slides" id="carouselSlides">
-                <!-- Slide 1 -->
-                <div class="carousel-slide">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='600' viewBox='0 0 1920 600'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234a5568;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%232d3748;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)' width='1920' height='600'/%3E%3Ctext x='50%25' y='40%25' text-anchor='middle' fill='%23ffffff' font-size='64' font-family='Arial' font-weight='bold'%3EWelcome to Aarav Enterprises%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='%23e2e8f0' font-size='28' font-family='Arial'%3EYour Premium Home Decor Destination%3C/text%3E%3C/svg%3E" alt="Slide 1">
-                </div>
-                <!-- Slide 2 -->
-                <div class="carousel-slide">
-                    <img src="prodduct2.jpg" alt="Slide 2">
-                </div>
-                <!-- Slide 3 -->
-                <div class="carousel-slide">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='600' viewBox='0 0 1920 600'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f093fb;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23f5576c;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad3)' width='1920' height='600'/%3E%3Ctext x='50%25' y='40%25' text-anchor='middle' fill='%23ffffff' font-size='64' font-family='Arial' font-weight='bold'%3EContact Us Today%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='%23ffffff' font-size='28' font-family='Arial'%3EGet Expert Advice %26 Best Prices%3C/text%3E%3C/svg%3E" alt="Slide 3">
+    <section class="hero" id="hero">
+        <div class="carousel-track" id="track">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="slide-content">
+                    <h2>Welcome to Aarav Enterprises</h2>
+                    <p>Your Premium Home Decor Destination in Birpur, Bihar.</p>
+                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Collection</button>
                 </div>
             </div>
-
-            <!-- Navigation Buttons -->
-            <button class="carousel-btn prev" id="prevBtn" aria-label="Previous slide">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <button class="carousel-btn next" id="nextBtn" aria-label="Next slide">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-
-            <!-- Dots Navigation -->
-            <div class="carousel-dots" id="carouselDots">
-                <span class="carousel-dot active" data-slide="0"></span>
-                <span class="carousel-dot" data-slide="1"></span>
-                <span class="carousel-dot" data-slide="2"></span>
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="slide-content">
+                    <h2>Exceptional Quality</h2>
+                    <p>Discover our curated selection of carpets, curtains, and elegant door mats.</p>
+                    <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="slide-content">
+                    <h2>Contact Us Today</h2>
+                    <p>Get Expert Advice & Best Prices direct from our showroom.</p>
+                    <a href="https://wa.me/919060681818" class="btn-primary" target="_blank">Chat on WhatsApp</a>
+                </div>
             </div>
         </div>
-    </div>
+        
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevSlide"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <button class="nav-btn" id="nextSlide"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        </div>
+        
+        <div class="indicators" id="indicators">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </section>
 
-    <!-- Category Tabs -->
-    <div class="category-tabs">
-        <button class="category-tab active" data-category="carpet">Carpet</button>
-        <button class="category-tab" data-category="curtain">Curtain</button>
-        <button class="category-tab" data-category="doormat">Door Mat</button>
-        <button class="category-tab" data-category="more">More Items</button>
-    </div>
-
-    <!-- Products Container -->
-    <div class="products-container">
-        <!-- Carpet Category -->
-        <div class="category-section active" data-category="carpet">
-            <h2 class="category-title">Carpet Collection</h2>
-            <div class="product-grid" id="carpetGrid"></div>
+    <section class="products-wrapper" id="products">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-target="carpet">Carpet Collection</button>
+            <button class="tab-btn" data-target="curtain">Curtain Collection</button>
+            <button class="tab-btn" data-target="doormat">Door Mat Collection</button>
+            <button class="tab-btn" data-target="more">More Items</button>
         </div>
 
-        <!-- Curtain Category -->
-        <div class="category-section" data-category="curtain">
-            <h2 class="category-title">Curtain Collection</h2>
-            <div class="product-grid" id="curtainGrid"></div>
+        <div class="tab-content active" id="carpet">
+            <div class="product-grid" id="grid-carpet"></div>
         </div>
-
-        <!-- Door Mat Category -->
-        <div class="category-section" data-category="doormat">
-            <h2 class="category-title">Door Mat Collection</h2>
-            <div class="product-grid" id="doormatGrid"></div>
+        <div class="tab-content" id="curtain">
+            <div class="product-grid" id="grid-curtain"></div>
         </div>
-
-        <!-- More Items Category -->
-        <div class="category-section" data-category="more">
-            <h2 class="category-title">More Items</h2>
-            <div class="product-grid" id="moreGrid"></div>
+        <div class="tab-content" id="doormat">
+            <div class="product-grid" id="grid-doormat"></div>
         </div>
-    </div>
+        <div class="tab-content" id="more">
+            <div class="product-grid" id="grid-more"></div>
+        </div>
+    </section>
 
     <!-- Product Modal -->
-    <div class="modal-overlay" id="productModal">
-        <div class="product-modal">
-            <button class="modal-close" id="closeProductModal">
-                <svg viewBox="0 0 24 24">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="modal-content">
-                <div class="modal-image">
-                    <img id="modalImage" src="" alt="">
+    <div class="modal" id="prodModal">
+        <div class="modal-content prod-modal-grid">
+            <button class="close-modal">&times;</button>
+            <div class="prod-img-wrap">
+                <img id="mImg" src="" alt="">
+            </div>
+            <div class="prod-details">
+                <h2 id="mTitle">Product Title</h2>
+                <div class="price-block product-price">
+                    <span class="price-current" id="mPrice">₹0</span>
+                    <span class="price-old" id="mOldPrice">₹0</span>
                 </div>
-                <div class="modal-details">
-                    <h2 id="modalTitle"></h2>
-                    <p id="modalDescription">Premium quality home decor item crafted with attention to detail. Features elegant design and durable materials for long-lasting use.</p>
-                    <div class="product-price">
-                        <span class="current-price" id="modalPrice"></span>
-                        <span class="original-price" id="modalOriginalPrice"></span>
-                    </div>
-                    
-                    <!-- WhatsApp Query Section -->
-                    <div class="whatsapp-action">
-                        <div class="query-text">Any Query?</div>
-                        <a href="#" class="whatsapp-btn" id="whatsappQueryBtn">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            Chat on WhatsApp
-                        </a>
-                    </div>
-                </div>
+                <p class="prod-desc">Enhance your home with this premium quality piece from Aarav Enterprises. Crafted meticulously to fuse stunning aesthetic appeal with superior durability. Experience the perfect blend of modern elegance and timeless charm.</p>
+                <a href="#" class="wa-btn" id="mWaBtn" target="_blank">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    Inquire on WhatsApp
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Calculator Modal -->
-    <div class="modal-overlay" id="calculatorModal">
-        <div class="calculator-modal">
-            <button class="modal-close" id="closeCalculatorModal">
-                <svg viewBox="0 0 24 24">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+    <div class="modal" id="calcModal">
+        <div class="modal-content calc-modal-content">
+            <button class="close-modal">&times;</button>
             <div class="calc-header">
-                <h3>Calculation Tools</h3>
+                <h2>Tools & Options</h2>
                 <div class="calc-tabs">
-                    <button class="calc-tab active" data-tab="calculator">Carpet Calculator</button>
-                    <button class="calc-tab" data-tab="converter">Currency</button>
+                    <button class="calc-tab active" data-target="c-carpet">Carpet Calculator</button>
+                    <button class="calc-tab" data-target="c-currency">Currency Converter</button>
                 </div>
             </div>
+            
             <div class="calc-body">
-                <!-- Carpet Length Calculator -->
-                <div class="calculator-view active" id="calculatorView">
-                    <form class="carpet-calculator-form" id="carpetCalculatorForm">
-                        <div class="carpet-calc-group">
-                            <label class="carpet-calc-label" for="carpetRoomLength">Room Length (feet)</label>
-                            <input 
-                                type="number" 
-                                class="carpet-calc-input" 
-                                id="carpetRoomLength" 
-                                placeholder="e.g., 20"
-                                min="0"
-                                step="0.1"
-                            >
-                        </div>
-
-                        <div class="carpet-calc-group">
-                            <label class="carpet-calc-label" for="carpetRoomWidth">Room Width (feet)</label>
-                            <input 
-                                type="number" 
-                                class="carpet-calc-input" 
-                                id="carpetRoomWidth" 
-                                placeholder="e.g., 15"
-                                min="0"
-                                step="0.1"
-                            >
-                        </div>
-
-                        <div class="carpet-calc-group">
-                            <label class="carpet-calc-label" for="carpetWidth">Carpet Width (feet)</label>
-                            <input 
-                                type="number" 
-                                class="carpet-calc-input" 
-                                id="carpetWidth" 
-                                placeholder="e.g., 12"
-                                min="0"
-                                step="0.1"
-                            >
-                        </div>
-
-                        <div class="carpet-calc-error" id="carpetCalcError">
-                            ⚠️ Please fill in all fields with valid numbers
-                        </div>
-
-                        <button type="submit" class="carpet-calc-btn">Calculate Length</button>
-
-                        <div class="carpet-calc-result" id="carpetCalcResult">
-                            <div class="carpet-result-value" id="carpetResultValue">0.00</div>
-                            <div class="carpet-result-label">Meters of Carpet Required</div>
-                        </div>
-                    </form>
+                <!-- Carpet Calc -->
+                <div class="calc-view active" id="c-carpet">
+                    <div class="error-msg" id="calcError">Please enter valid numeric values for all fields.</div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Room Length (feet)</label>
+                        <input type="number" id="rLength" class="form-input" placeholder="Enter length in feet" min="0.1" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Room Width (feet)</label>
+                        <input type="number" id="rWidth" class="form-input" placeholder="Enter width in feet" min="0.1" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Carpet Width (feet)</label>
+                        <input type="number" id="cWidth" class="form-input" placeholder="Enter carpet width in feet" min="0.1" step="0.1">
+                    </div>
+                    
+                    <button class="btn-primary btn-block" id="btnCalc">Calculate Length</button>
+                    
+                    <div class="result-box" id="calcResult">
+                        <div class="result-value" id="resMeters">0.00</div>
+                        <div class="result-label">Meters of Carpet Required</div>
+                    </div>
                 </div>
 
                 <!-- Currency Converter -->
-                <div class="currency-converter" id="currencyConverter">
-                    <div class="currency-group">
-                        <label>Nepali Rupees (NPR)</label>
-                        <input type="number" class="currency-input" id="nprInput" placeholder="0.00">
+                <div class="calc-view" id="c-currency">
+                    <div class="form-group">
+                        <label class="form-label">Nepali Rupees (NPR)</label>
+                        <input type="number" id="nprVal" class="form-input" placeholder="0.00">
                     </div>
-                    <button class="swap-btn" id="swapBtn">
-                        <span>⇅</span>
-                        <span>SWAP</span>
-                    </button>
-                    <div class="currency-group">
-                        <label>Indian Rupees (INR)</label>
-                        <input type="number" class="currency-input" id="inrInput" placeholder="0.00">
+                    
+                    <div class="swap-wrapper">
+                        <button class="btn-swap" id="btnSwap" aria-label="Swap Currency">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="16 3 21 8 16 13"></polyline><line x1="21" y1="8" x2="9" y2="8"></line><polyline points="8 21 3 16 8 11"></polyline><line x1="3" y1="16" x2="15" y2="16"></line></svg>
+                        </button>
                     </div>
-                    <div class="conversion-rate">
-                        1 NPR = 0.625 INR | 1 INR = 1.60 NPR
+                    
+                    <div class="form-group">
+                        <label class="form-label">Indian Rupees (INR)</label>
+                        <input type="number" id="inrVal" class="form-input" placeholder="0.00">
+                    </div>
+                    
+                    <div class="rate-info">
+                        Fixed Rate: 1 NPR = 0.625 INR &nbsp;|&nbsp; 1 INR = 1.60 NPR
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/9060681818?text=Hi%2C%20I%20have%20a%20query%20about%20your%20products" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919060681818" class="float-wa" target="_blank" aria-label="WhatsApp Us">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
                 <h3>Aarav Enterprises</h3>
-                <p>Your trusted partner for premium home decor solutions.</p>
+                <p>Your trusted partner for premium home decor solutions. Providing quality, elegance, and trust since the beginning.</p>
             </div>
-            <div class="footer-section">
+            <div class="footer-col">
                 <h3>Address</h3>
-                <p>854340 birpur,bihar</p>
-                <p>Main road</p>
-                <p>birpur- 854340</p>
+                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Main Road, Birpur – 854340 <br> Bihar, India</p>
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Phone: <a href="tel:+919060681818">+919060681818</a></p>
-                <p>WhatsApp: <a href="https://wa.me/+919060681818" target="_blank">+919060681818</a></p>
-                <p>Email: info@aaraventerprises.com</p>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <a href="tel:+919060681818">+91 9060681818</a></p>
+                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> <a href="https://wa.me/919060681818" target="_blank">WhatsApp Us</a></p>
+                <p><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> <a href="mailto:info@aaraventerprises.com">info@aaraventerprises.com</a></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Aarav Enterprises. All rights reserved.</p>
+            &copy; 2025 Aarav Enterprises. All rights reserved.
         </div>
     </footer>
 
     <script>
-        // WhatsApp Configuration
-        const WHATSAPP_NUMBER = '+919060681818';
-        
-        // ========================================
-        // CAROUSEL FUNCTIONALITY WITH MOBILE SWIPE
-        // ========================================
-        let currentSlide = 0;
-        const totalSlides = 3;
-        const carouselSlides = document.getElementById('carouselSlides');
-        const heroCarousel = document.getElementById('heroCarousel');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // Touch handling variables
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let touchStartY = 0;
-        let touchEndY = 0;
-        const minSwipeDistance = 50;
-
-        function updateCarousel() {
-            carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
-
-        // Touch event handlers for mobile swipe
-        function handleTouchStart(e) {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        }
-
-        function handleTouchMove(e) {
-            // Prevent default only if swiping horizontally
-            const touchMoveX = e.touches[0].clientX;
-            const touchMoveY = e.touches[0].clientY;
-            const diffX = Math.abs(touchMoveX - touchStartX);
-            const diffY = Math.abs(touchMoveY - touchStartY);
-            
-            if (diffX > diffY) {
-                e.preventDefault();
-            }
-        }
-
-        function handleTouchEnd(e) {
-            touchEndX = e.changedTouches[0].clientX;
-            touchEndY = e.changedTouches[0].clientY;
-            handleSwipe();
-        }
-
-        function handleSwipe() {
-            const swipeDistanceX = touchEndX - touchStartX;
-            const swipeDistanceY = Math.abs(touchEndY - touchStartY);
-            
-            // Only register as swipe if horizontal movement is greater than vertical
-            if (Math.abs(swipeDistanceX) > minSwipeDistance && Math.abs(swipeDistanceX) > swipeDistanceY) {
-                if (swipeDistanceX < 0) {
-                    // Swipe left - next slide
-                    nextSlide();
-                } else {
-                    // Swipe right - previous slide
-                    prevSlide();
-                }
-            }
-        }
-
-        // Event listeners for carousel buttons
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
-
-        // Add touch event listeners for mobile swipe
-        heroCarousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-        heroCarousel.addEventListener('touchmove', handleTouchMove, { passive: false });
-        heroCarousel.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-        // Auto-play carousel every 5 seconds
-        let autoplayInterval = setInterval(nextSlide, 5000);
-
-        // Pause autoplay on hover or touch
-        heroCarousel.addEventListener('mouseenter', () => {
-            clearInterval(autoplayInterval);
-        });
-
-        heroCarousel.addEventListener('mouseleave', () => {
-            autoplayInterval = setInterval(nextSlide, 5000);
-        });
-
-        heroCarousel.addEventListener('touchstart', () => {
-            clearInterval(autoplayInterval);
-        });
-
-        heroCarousel.addEventListener('touchend', () => {
-            autoplayInterval = setInterval(nextSlide, 5000);
-        });
-
-        // ========================================
-        // PRODUCT DATA
-        // ========================================
-        const productsByCategory = {
+        // Data
+        const products = {
             carpet: [
-                { name: "PERSIAN LUXE CARPET", price: 300, originalPrice: 500, discount: 38, image: "product2.jpg" },
-                { name: "MODERN GEOMETRIC CARPET", price: 300, originalPrice: 500, discount: 36, image: "carpet2.jpg" },
-                { name: "SHAG PLUSH CARPET", price: 2999, originalPrice: 4499, discount: 33, image: "white carpet .jpg.jpg" },
-                { name: "VINTAGE ORIENTAL CARPET", price: 5499, originalPrice: 8999, discount: 39, image: "silver carpet.jpg" },
-                { name: "CONTEMPORARY WOOL CARPET", price: 3999, originalPrice: 6499, discount: 38, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23708090' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3ECarpet%3C/text%3E%3C/svg%3E" }
+                { id: 'c1', name: 'Persian Heritage Red Carpet', price: 4500, oldPrice: 6000, img: 'https://images.unsplash.com/photo-1600166898405-da9535204843?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'c2', name: 'Modern Geometric Area Rug', price: 3200, oldPrice: 4000, img: 'https://images.unsplash.com/photo-1574825946227-2c5253818e1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'c3', name: 'Luxury Shaggy White Carpet', price: 2800, oldPrice: 3500, img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'c4', name: 'Classic Oriental Wool Rug', price: 5500, oldPrice: 7000, img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
             ],
             curtain: [
-                { name: "VELVET BLACKOUT CURTAIN", price: 2499, originalPrice: 3999, discount: 38, image: "door curtain.jpg" },
-                { name: "SHEER LINEN CURTAIN", price: 1499, originalPrice: 2299, discount: 35, image: "brown printed curtian.jpg" },
-                { name: "EMBROIDERED SILK CURTAIN", price: 3499, originalPrice: 5499, discount: 36, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23800020' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3ECurtain%3C/text%3E%3C/svg%3E" },
-                { name: "THERMAL INSULATED CURTAIN", price: 1999, originalPrice: 2999, discount: 33, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23483D8B' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3ECurtain%3C/text%3E%3C/svg%3E" },
-                { name: "BOHEMIAN PATTERN CURTAIN", price: 1799, originalPrice: 2799, discount: 36, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23CD853F' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3ECurtain%3C/text%3E%3C/svg%3E" }
+                { id: 'cu1', name: 'Premium Velvet Blackout Curtain', price: 1800, oldPrice: 2400, img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'cu2', name: 'Sheer Elegant Window Drapes', price: 1200, oldPrice: 1600, img: 'https://images.unsplash.com/photo-1588636184918-cc85d85d7768?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'cu3', name: 'Floral Printed Cotton Curtain', price: 1500, oldPrice: 2000, img: 'https://images.unsplash.com/photo-1579705705352-70b0cc44df3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'cu4', name: 'Thermal Insulated Solid Drapes', price: 2100, oldPrice: 2800, img: 'https://images.unsplash.com/photo-1627308595186-b4dabc1f0b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
             ],
             doormat: [
-                { name: "COIR WELCOME DOOR MAT", price: 699, originalPrice: 999, discount: 30, image: "doormatebr.jpg.jpg" },
-                { name: "RUBBER ANTI-SLIP MAT", price: 499, originalPrice: 799, discount: 38, image: "jute doormate.jpg" },
-                { name: "PERSONALIZED NAME MAT", price: 899, originalPrice: 1299, discount: 31, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23556B2F' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3EDoor Mat%3C/text%3E%3C/svg%3E" },
-                { name: "MODERN GEOMETRIC MAT", price: 799, originalPrice: 1199, discount: 33, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%234B0082' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3EDoor Mat%3C/text%3E%3C/svg%3E" },
-                { name: "WATERPROOF OUTDOOR MAT", price: 599, originalPrice: 899, discount: 33, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23696969' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3EDoor Mat%3C/text%3E%3C/svg%3E" }
+                { id: 'd1', name: 'Welcome Coir Mat', price: 500, oldPrice: 750, img: 'https://images.unsplash.com/photo-1594833215579-0524419914fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'd2', name: 'Anti-Slip Rubber Doormat', price: 450, oldPrice: 600, img: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'd3', name: 'Heavy Duty Outdoor Mat', price: 800, oldPrice: 1200, img: 'https://images.unsplash.com/photo-1629737409192-383db1f54460?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'd4', name: 'Decorative Printed Doormat', price: 650, oldPrice: 900, img: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
             ],
             more: [
-                { name: "DECORATIVE WALL MIRROR", price: 2999, originalPrice: 4499, discount: 33, image: "carpet1.jpg" },
-                { name: "CERAMIC VASE SET", price: 1299, originalPrice: 1999, discount: 35, image: "jhol cleanwe.jpg" },
-                { name: "AROMATHERAPY CANDLE SET", price: 899, originalPrice: 1399, discount: 36, image: "dust pan.jpg" },
-                { name: "WOODEN WALL SHELF", price: 1799, originalPrice: 2699, discount: 33, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%238B4513' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3EShelf%3C/text%3E%3C/svg%3E" },
-                { name: "THROW PILLOW COVERS", price: 699, originalPrice: 1099, discount: 36, image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23BC8F8F' width='300' height='400'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='%23fff' font-size='16' font-family='Arial'%3EPillow%3C/text%3E%3C/svg%3E" }
+                { id: 'm1', name: 'Ceramic Table Vase Set', price: 1400, oldPrice: 2000, img: 'https://images.unsplash.com/photo-1581783342308-f792dbca2f18?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'm2', name: 'Decorative Wall Mirror', price: 2500, oldPrice: 3200, img: 'https://images.unsplash.com/photo-1618220179428-22790b46a014?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'm3', name: 'Plush Throw Pillows (Set)', price: 900, oldPrice: 1200, img: 'https://images.unsplash.com/photo-1584100936551-93339ed3462f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                { id: 'm4', name: 'Aromatic Candle Collection', price: 600, oldPrice: 850, img: 'https://images.unsplash.com/photo-1602874801007-bd458cb6c507?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
             ]
         };
 
-        // Store current product for WhatsApp message
-        let currentProduct = null;
+        const waNumber = "919060681818";
 
-        // ========================================
-        // RENDER PRODUCTS
-        // ========================================
-        function renderProducts(category, gridId) {
-            const grid = document.getElementById(gridId);
-            const products = productsByCategory[category];
-            
-            products.forEach((product, index) => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.style.animationDelay = `${index * 0.05}s`;
-                
-                card.innerHTML = `
-                    <div class="discount-badge">SAVE ${product.discount}%</div>
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                        <button class="add-btn" aria-label="Add to cart">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+        // Render Grids
+        function renderGrid(catKey) {
+            const container = document.getElementById('grid-' + catKey);
+            let html = '';
+            products[catKey].forEach(p => {
+                const discount = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
+                html += `
+                <div class="product-card" onclick="openProdModal('${catKey}', '${p.id}')">
+                    <div class="badge">${discount}% OFF</div>
+                    <div class="img-container">
+                        <img src="${p.img}" alt="${p.name}" loading="lazy">
+                        <button class="quick-add"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Quick View</button>
                     </div>
                     <div class="product-info">
-                        <div class="product-name">${product.name}</div>
+                        <div class="product-title">${p.name}</div>
                         <div class="product-price">
-                            <span class="current-price">RS. ${product.price.toLocaleString()}</span>
-                            <span class="original-price">RS. ${product.originalPrice.toLocaleString()}</span>
+                            <span class="price-current">₹${p.price.toLocaleString('en-IN')}</span>
+                            <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
                         </div>
                     </div>
-                `;
-                
-                card.addEventListener('click', (e) => {
-                    // Prevent opening modal if clicking the add button
-                    if (!e.target.closest('.add-btn')) {
-                        e.preventDefault();
-                        openProductModal(product);
-                    }
-                });
-                
-                grid.appendChild(card);
+                </div>`;
             });
+            container.innerHTML = html;
         }
 
-        // Initialize all product grids
-        renderProducts('carpet', 'carpetGrid');
-        renderProducts('curtain', 'curtainGrid');
-        renderProducts('doormat', 'doormatGrid');
-        renderProducts('more', 'moreGrid');
+        ['carpet', 'curtain', 'doormat', 'more'].forEach(renderGrid);
 
-        // ========================================
-        // CATEGORY TAB SWITCHING
-        // ========================================
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const categorySections = document.querySelectorAll('.category-section');
-        
-        categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const category = tab.dataset.category;
-                
-                // Update active tab
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Update active section
-                categorySections.forEach(section => {
-                    if (section.dataset.category === category) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // ========================================
-        // PRODUCT MODAL (INTERNAL NAVIGATION)
-        // ========================================
-        const productModal = document.getElementById('productModal');
-        const closeProductModalBtn = document.getElementById('closeProductModal');
-        const whatsappQueryBtn = document.getElementById('whatsappQueryBtn');
-        
-        function openProductModal(product) {
-            currentProduct = product;
-            document.getElementById('modalImage').src = product.image;
-            document.getElementById('modalTitle').textContent = product.name;
-            document.getElementById('modalPrice').textContent = `RS. ${product.price.toLocaleString()}`;
-            document.getElementById('modalOriginalPrice').textContent = `RS. ${product.originalPrice.toLocaleString()}`;
+        // Product Modal Logic
+        const prodModal = document.getElementById('prodModal');
+        function openProdModal(catKey, pId) {
+            const p = products[catKey].find(x => x.id === pId);
+            if(!p) return;
             
-            // Update WhatsApp link with product details
-            const message = `Hi, I'm interested in ${product.name} (RS. ${product.price}). Can you provide more details?`;
-            whatsappQueryBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            document.getElementById('mImg').src = p.img;
+            document.getElementById('mTitle').textContent = p.name;
+            document.getElementById('mPrice').textContent = '₹' + p.price.toLocaleString('en-IN');
+            document.getElementById('mOldPrice').textContent = '₹' + p.oldPrice.toLocaleString('en-IN');
             
-            // Add URL hash for internal navigation (doesn't navigate away)
-            window.history.pushState({ modal: 'product' }, '', '#product');
+            const msg = encodeURIComponent(`Hi! I'm interested in the "${p.name}" priced at ₹${p.price}. Can I get more details?`);
+            document.getElementById('mWaBtn').href = `https://wa.me/${waNumber}?text=${msg}`;
             
-            productModal.classList.add('active');
+            prodModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
-        function closeProductModal() {
-            productModal.classList.remove('active');
-            document.body.style.overflow = '';
-            currentProduct = null;
-            
-            // Remove hash from URL if present
-            if (window.location.hash === '#product') {
-                window.history.back();
-            }
+
+        // Dark Mode Logic
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeBtn.innerHTML = isDark 
+                ? '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" fill="none" stroke-width="2"></path></svg>'
+                : '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" stroke="currentColor" fill="none" stroke-width="2"></circle><line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"></line><line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"></line><line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"></line><line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"></line></svg>';
+        });
+
+        // Tabs Logic (Products)
+        document.querySelectorAll('.tab-btn:not(.calc-tab)').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn:not(.calc-tab)').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                document.getElementById(e.target.dataset.target).classList.add('active');
+            });
+        });
+
+        // Carousel Logic
+        let curSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const track = document.getElementById('track');
+        const slideCount = slides.length;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${curSlide * 100}%)`;
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === curSlide);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === curSlide);
+            });
         }
-        
-        closeProductModalBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            closeProductModal();
-        });
-        
-        productModal.addEventListener('click', (e) => {
-            if (e.target === productModal) {
-                closeProductModal();
-            }
-        });
 
-        // Handle browser back button
-        window.addEventListener('popstate', (e) => {
-            if (productModal.classList.contains('active')) {
-                productModal.classList.remove('active');
-                document.body.style.overflow = '';
-                currentProduct = null;
-            }
-            if (calculatorModal.classList.contains('active')) {
-                calculatorModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+        document.getElementById('prevSlide').addEventListener('click', () => { curSlide = (curSlide - 1 + slideCount) % slideCount; updateSlider(); resetInterval(); });
+        document.getElementById('nextSlide').addEventListener('click', () => { curSlide = (curSlide + 1) % slideCount; updateSlider(); resetInterval(); });
+        dots.forEach(d => d.addEventListener('click', (e) => { curSlide = parseInt(e.target.dataset.index); updateSlider(); resetInterval(); }));
 
-        // ========================================
-        // CALCULATOR MODAL
-        // ========================================
-        const calculatorBtn = document.getElementById('calculatorBtn');
-        const calculatorModal = document.getElementById('calculatorModal');
-        const closeCalculatorModalBtn = document.getElementById('closeCalculatorModal');
-        
-        calculatorBtn.addEventListener('click', () => {
-            window.history.pushState({ modal: 'calculator' }, '', '#calculator');
-            calculatorModal.classList.add('active');
+        // Touch swipe support
+        let startX = 0;
+        document.getElementById('hero').addEventListener('touchstart', e => startX = e.changedTouches[0].screenX, {passive: true});
+        document.getElementById('hero').addEventListener('touchend', e => {
+            let endX = e.changedTouches[0].screenX;
+            if (startX - endX > 50) { curSlide = (curSlide + 1) % slideCount; updateSlider(); resetInterval(); }
+            else if (endX - startX > 50) { curSlide = (curSlide - 1 + slideCount) % slideCount; updateSlider(); resetInterval(); }
+        }, {passive: true});
+
+        let autoSlide = setInterval(() => { curSlide = (curSlide + 1) % slideCount; updateSlider(); }, 5000);
+        function resetInterval() { clearInterval(autoSlide); autoSlide = setInterval(() => { curSlide = (curSlide + 1) % slideCount; updateSlider(); }, 5000); }
+
+        // Calc Modal Logic
+        const calcModal = document.getElementById('calcModal');
+        document.getElementById('openCalc').addEventListener('click', () => {
+            calcModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
-        
-        function closeCalculatorModal() {
-            calculatorModal.classList.remove('active');
-            document.body.style.overflow = '';
-            clearCarpetCalculator();
-            
-            if (window.location.hash === '#calculator') {
-                window.history.back();
+
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                prodModal.classList.remove('active');
+                calcModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        window.onclick = function(e) {
+            if (e.target == prodModal || e.target == calcModal) {
+                prodModal.classList.remove('active');
+                calcModal.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        }
-        
-        closeCalculatorModalBtn.addEventListener('click', closeCalculatorModal);
-        calculatorModal.addEventListener('click', (e) => {
-            if (e.target === calculatorModal) closeCalculatorModal();
-        });
+        };
 
-        // ========================================
-        // CALCULATOR TABS
-        // ========================================
-        const calcTabs = document.querySelectorAll('.calc-tab');
-        const calculatorView = document.getElementById('calculatorView');
-        const currencyConverter = document.getElementById('currencyConverter');
-        
-        calcTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                calcTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                const tabName = tab.dataset.tab;
-                if (tabName === 'calculator') {
-                    calculatorView.classList.add('active');
-                    currencyConverter.classList.remove('active');
-                } else {
-                    calculatorView.classList.remove('active');
-                    currencyConverter.classList.add('active');
-                }
+        // Tabs Logic (Calculator)
+        document.querySelectorAll('.calc-tab').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.calc-tab').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.calc-view').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                document.getElementById(e.target.dataset.target).classList.add('active');
             });
         });
 
-        // ========================================
-        // CARPET LENGTH CALCULATOR
-        // ========================================
-        const carpetCalculatorForm = document.getElementById('carpetCalculatorForm');
-        const carpetRoomLength = document.getElementById('carpetRoomLength');
-        const carpetRoomWidth = document.getElementById('carpetRoomWidth');
-        const carpetWidth = document.getElementById('carpetWidth');
-        const carpetCalcError = document.getElementById('carpetCalcError');
-        const carpetCalcResult = document.getElementById('carpetCalcResult');
-        const carpetResultValue = document.getElementById('carpetResultValue');
+        // Carpet Calculator Core Logic
+        // Step 1: Convert all values from feet to meters (1 ft = 0.3048 m)
+        // Step 2: Calculate number of strips = ceil(Room Width (m) / Carpet Width (m))
+        // Step 3: Total carpet meters = Number of strips * Room Length (m)
+        document.getElementById('btnCalc').addEventListener('click', () => {
+            const rL_ft = parseFloat(document.getElementById('rLength').value);
+            const rW_ft = parseFloat(document.getElementById('rWidth').value);
+            const cW_ft = parseFloat(document.getElementById('cWidth').value);
+            const err = document.getElementById('calcError');
+            const resBox = document.getElementById('calcResult');
 
-        if (carpetCalculatorForm) {
-            carpetCalculatorForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                calculateCarpetLength();
-            });
-        }
-
-        function calculateCarpetLength() {
-            // Get input values
-            const roomLength = parseFloat(carpetRoomLength.value);
-            const roomWidth = parseFloat(carpetRoomWidth.value);
-            const carpetWidthValue = parseFloat(carpetWidth.value);
-
-            // Hide previous results and errors
-            carpetCalcError.classList.remove('show');
-            carpetCalcResult.style.display = 'none';
-
-            // Validation
-            if (!roomLength || !roomWidth || !carpetWidthValue || 
-                roomLength <= 0 || roomWidth <= 0 || carpetWidthValue <= 0) {
-                carpetCalcError.classList.add('show');
+            if (isNaN(rL_ft) || isNaN(rW_ft) || isNaN(cW_ft) || rL_ft <= 0 || rW_ft <= 0 || cW_ft <= 0) {
+                err.style.display = 'block';
+                resBox.style.display = 'none';
                 return;
             }
+            err.style.display = 'none';
 
-            // Calculate number of carpet strips needed
-            const numberOfStrips = Math.ceil(roomWidth / carpetWidthValue);
+            // Step 1
+            const rL_m = rL_ft * 0.3048;
+            const rW_m = rW_ft * 0.3048;
+            const cW_m = cW_ft * 0.3048;
 
-            // Calculate total carpet length in feet
-            const totalLengthFeet = numberOfStrips * roomLength;
+            // Step 2
+            const strips = Math.ceil(rW_m / cW_m);
 
-            // Convert to meters (1 foot = 0.3048 meters)
-            const totalLengthMeters = totalLengthFeet * 0.3048;
+            // Step 3
+            const totalMeters = strips * rL_m;
 
-            // Display result
-            carpetResultValue.textContent = totalLengthMeters.toFixed(2);
-            carpetCalcResult.style.display = 'block';
-        }
-
-        // Clear inputs when modal is closed
-        function clearCarpetCalculator() {
-            if (carpetRoomLength) carpetRoomLength.value = '';
-            if (carpetRoomWidth) carpetRoomWidth.value = '';
-            if (carpetWidth) carpetWidth.value = '';
-            if (carpetCalcError) carpetCalcError.classList.remove('show');
-            if (carpetCalcResult) carpetCalcResult.style.display = 'none';
-        }
-
-        // ========================================
-        // CURRENCY CONVERTER
-        // ========================================
-        const nprInput = document.getElementById('nprInput');
-        const inrInput = document.getElementById('inrInput');
-        const swapBtn = document.getElementById('swapBtn');
-        
-        const NPR_TO_INR = 0.625;
-        const INR_TO_NPR = 1.60;
-        
-        nprInput.addEventListener('input', () => {
-            const nprValue = parseFloat(nprInput.value) || 0;
-            inrInput.value = (nprValue * NPR_TO_INR).toFixed(2);
-        });
-        
-        inrInput.addEventListener('input', () => {
-            const inrValue = parseFloat(inrInput.value) || 0;
-            nprInput.value = (inrValue * INR_TO_NPR).toFixed(2);
-        });
-        
-        swapBtn.addEventListener('click', () => {
-            const temp = nprInput.value;
-            nprInput.value = inrInput.value;
-            inrInput.value = temp;
+            document.getElementById('resMeters').textContent = totalMeters.toFixed(2);
+            resBox.style.display = 'block';
         });
 
-        // ========================================
-        // THEME TOGGLE
-        // ========================================
-        const themeToggle = document.getElementById('themeToggle');
-        let isDark = false;
-        
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        // Currency Converter Logic
+        const nprInp = document.getElementById('nprVal');
+        const inrInp = document.getElementById('inrVal');
+        const rateNprInr = 0.625; // 1 NPR = 0.625 INR
+        const rateInrNpr = 1.60;  // 1 INR = 1.60 NPR
+
+        nprInp.addEventListener('input', () => {
+            let n = parseFloat(nprInp.value);
+            if(!isNaN(n)) inrInp.value = (n * rateNprInr).toFixed(2);
+            else inrInp.value = '';
         });
 
-        // ========================================
-        // KEYBOARD SUPPORT
-        // ========================================
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeProductModal();
-                closeCalculatorModal();
+        inrInp.addEventListener('input', () => {
+            let i = parseFloat(inrInp.value);
+            if(!isNaN(i)) nprInp.value = (i * rateInrNpr).toFixed(2);
+            else nprInp.value = '';
+        });
+
+        document.getElementById('btnSwap').addEventListener('click', () => {
+            let temp = nprInp.value;
+            nprInp.value = inrInp.value;
+            inrInp.value = temp;
+            
+            // Trigger calculation manually based on which one has value
+            if (nprInp.value !== '') {
+                inrInp.value = (parseFloat(nprInp.value) * rateNprInr).toFixed(2);
+            } else if (inrInp.value !== '') {
+                nprInp.value = (parseFloat(inrInp.value) * rateInrNpr).toFixed(2);
             }
         });
+
     </script>
 </body>
 </html>
