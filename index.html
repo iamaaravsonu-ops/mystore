@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarav Enterprises - Premium Home Decor Solutions</title>
-    <meta name="description" content="Your trusted partner for premium home decor solutions in Birpur, Bihar. Discover our exclusive collection of carpets, curtains, and door mats.">
+    <title>Aarav Enterprises | Premium Home Decor in Birpur, Bihar</title>
+    <meta name="description" content="Aarav Enterprises is your trusted partner for premium home decor solutions in Birpur, Bihar. Discover our exclusive collection of luxury carpets, elegant curtains, and door mats.">
+    <meta name="keywords" content="Aarav Enterprises, Home Decor Birpur, Carpets Bihar, Curtains, Door Mats, Interior Decor, Home Furnishing, Retail Home Decor">
+    <meta name="author" content="Aarav Enterprises">
     <meta name="theme-color" content="#d32f2f">
     
     <!-- Google Fonts -->
@@ -205,7 +207,7 @@
             transform: translateY(0);
         }
 
-        .slide h2 {
+        .slide h1, .slide h2 {
             font-family: var(--font-serif);
             font-size: 3rem;
             margin-bottom: 15px;
@@ -467,6 +469,130 @@
             color: var(--text-muted);
             text-decoration: line-through;
             font-size: 14px;
+        }
+
+        /* Info Sections (Services, Policies, Location) */
+        .info-section {
+            background-color: var(--bg-body);
+            padding: 60px 5%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .info-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            background: var(--bg-surface);
+            padding: 35px 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-red);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(211, 47, 47, 0.1);
+            color: var(--primary-red);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .info-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-list li svg {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            flex-shrink: 0;
+        }
+
+        .info-list li strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .contact-info {
+            flex-grow: 1;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .contact-info strong {
+            color: var(--text-main);
+        }
+
+        .wa-btn-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--whatsapp-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+
+        .wa-btn-small:hover {
+            background: var(--whatsapp-green-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            color: white;
+        }
+
+        .wa-btn-small svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* Modals */
@@ -944,7 +1070,7 @@
             .hero {
                 height: 300px;
             }
-            .slide h2 {
+            .slide h1, .slide h2 {
                 font-size: 2rem;
             }
             .slide p {
@@ -1053,7 +1179,7 @@
             <!-- Slide 1 -->
             <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
                 <div class="slide-content">
-                    <h2>Welcome to Aarav Enterprises</h2>
+                    <h1>Welcome to Aarav Enterprises</h1>
                     <p>Your Premium Home Decor Destination in Birpur, Bihar.</p>
                     <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Collection</button>
                 </div>
@@ -1107,6 +1233,57 @@
         </div>
         <div class="tab-content" id="more">
             <div class="product-grid" id="grid-more"></div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <!-- Services -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>Our Services</h3>
+                <ul class="info-list">
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--whatsapp-green)" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Wholesale & Retail Premium Decor</li>
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--whatsapp-green)" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Sizing for Carpets & Mats</li>
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--whatsapp-green)" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Doorstep Delivery Across Region</li>
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--whatsapp-green)" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Bulk Orders for Hospitality & Events</li>
+                </ul>
+            </div>
+
+            <!-- Policies -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h3>Business Policies</h3>
+                <ul class="info-list">
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 12 12 14 14"></polyline></svg> <strong>Refunds:</strong> Valid on manufacturing defects within 7 Days.</li>
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg> <strong>Shipping:</strong> Free standard shipping on orders above ₹5,000.</li>
+                    <li><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <strong>Payments:</strong> Secure Cash, UPI, and Bank Transfers accepted.</li>
+                </ul>
+            </div>
+
+            <!-- Location & Contact -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <h3>Visit Us</h3>
+                <div class="contact-info">
+                    <p><strong>Address:</strong> Main Road, Birpur - 854340, Bihar, India</p>
+                    <p><strong>Phone:</strong> +91 9060681818</p>
+                    <a href="https://wa.me/919060681818" class="wa-btn-small" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Inquire Now
+                    </a>
+                </div>
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14316.516132785465!2d86.99479366657216!3d26.5160076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ee9e0e5a8ea3fb%3A0xc6cb1e8538ef8bf2!2sBirpur%2C%20Bihar%20854340!5e0!3m2!1sen!2sin!4v1703606000000!5m2!1sen!2sin" width="100%" height="150" style="border:0; border-radius: 8px; margin-top: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
         </div>
     </section>
 
