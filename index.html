@@ -971,6 +971,55 @@
                 height: 36px;
             }
         }
+
+        /* Extra Mobile Adjustments */
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .logo span {
+                display: none; /* Hide "ENTERPRISES" on very small screens */
+            }
+
+            .header-actions {
+                gap: 8px;
+            }
+
+            .icon-btn {
+                width: 38px;
+                height: 38px;
+            }
+
+            .top-bar {
+                font-size: 11px;
+                padding: 8px 10px;
+                line-height: 1.4;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-grid {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header {
+                padding: 10px 10px;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
